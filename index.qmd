@@ -14,3 +14,7 @@ interpretation emerging in real time.
   (TidyTuesday 2026-06-02) — the arrival of co-parent leave, definitional traps in
   harmonised policy data, and what 55 years of leave policy do (and don't) say about
   the fertility decline debate.
+- **[Is the video game movie curse lifting?](game-films.qmd)**
+  (TidyTuesday 2026-06-09) — a 15-minute sprint: the ¥5bn Pokémon box-office trap,
+  three decades of rotten reviews turning a corner in 2019, and why opening-night
+  audiences grade these films a letter or three above the critics.
