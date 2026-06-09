@@ -18,3 +18,15 @@ interpretation emerging in real time.
   (TidyTuesday 2026-06-09) — a 15-minute sprint: the ¥5bn Pokémon box-office trap,
   three decades of rotten reviews turning a corner in 2019, and why opening-night
   audiences grade these films a letter or three above the critics.
+- **[A garden of glyphs: edible plants as flowers](edible-plants.qmd)**
+  (TidyTuesday 2026-02-03) — Chernoff faces, reimagined as flowers: each crop's
+  growing requirements rendered as petals, centre and colour, iris-dataset style.
+- **[The world, sister by sister](twinned-cities.qmd)**
+  (TidyTuesday 2026-05-12) — an interactive Leaflet map of 10,596 sister-city links:
+  hover to fan out a city's twins, click to pin and compare.
+- **[The frontier of human longevity, on a Lexis plane](oldest-people.qmd)**
+  (TidyTuesday 2023-05-30) — the 200 oldest verified people as lifelines on a Lexis
+  diagram, the stagnating longevity record, and the Calment anomaly.
+- **[Birth is scheduled: calendar effects in US births](us-births.qmd)**
+  (TidyTuesday 2018-10-02) — the working-week birth, holiday troughs, and the
+  measurable 5.3% dip on Friday the 13th.

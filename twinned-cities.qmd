@@ -1,0 +1,244 @@
+---
+title: "The world, sister by sister"
+subtitle: "TidyTuesday 2026-05-12 · Twinned (sister) cities worldwide"
+date: 2026-06-09
+---
+
+5,470 cities, 10,596 twinning links — a global network of "sister city" agreements
+stretching back to post-war reconciliation efforts. This page is built around a
+single interactive map: **hover a city to fan out its twin links; click to pin
+them** so you can compare several cities at once.
+
+```{r setup}
+#| include: false
+library(tidyverse)
+library(jsonlite)
+
+cities <- read_csv("data/twin_cities.csv", show_col_types = FALSE)
+links <- read_csv("data/twin_links.csv", show_col_types = FALSE)
+
+deg <- bind_rows(tibble(id = links$source), tibble(id = links$target)) |>
+  count(id, name = "deg")
+
+cont_pal <- c(Africa = "#e6952f", Asia = "#d4546b", Europe = "#3f7cac",
+              "North America" = "#5aa469", "South America" = "#9b59b6",
+              Oceania = "#16a3a3")
+
+cdat <- cities |>
+  left_join(deg, by = "id") |>
+  filter(!is.na(lat), !is.na(lng)) |>
+  transmute(
+    id, name, country,
+    continent = coalesce(continent, "Other"),
+    lat = round(lat, 3), lng = round(lng, 3),
+    deg = coalesce(deg, 0L),
+    col = coalesce(cont_pal[continent], "#888888")
+  )
+
+# adjacency keyed by id -> vector of neighbour ids (both directions)
+adj <- bind_rows(
+  links |> transmute(a = source, b = target),
+  links |> transmute(a = target, b = source)
+) |>
+  filter(a %in% cdat$id, b %in% cdat$id) |>
+  distinct() |>
+  summarise(nb = list(b), .by = a)
+
+adj_list <- set_names(adj$nb, adj$a)
+
+data_json <- toJSON(list(
+  cities = cdat,
+  adj = adj_list
+), auto_unbox = TRUE, dataframe = "rows")
+```
+
+```{r emit-data}
+#| echo: false
+#| results: asis
+cat('<script>\nconst TWIN = ', data_json, ';\n</script>\n', sep = "")
+```
+
+```{=html}
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<style>
+  #twinmap { height: 620px; border-radius: 8px; border: 1px solid #ddd; }
+  #twin-info {
+    font: 14px/1.4 system-ui, sans-serif; margin: 8px 2px; min-height: 2.6em;
+    color: #333;
+  }
+  #twin-info b { color: #111; }
+  .twin-pill {
+    display:inline-block; background:#2c3e50; color:#fff; border-radius:10px;
+    padding:1px 8px; font-size:12px; margin-left:6px;
+  }
+  .leaflet-tooltip.twin-tip { font-weight:600; }
+</style>
+
+<div id="twin-info">Hover any city to see its twin links · click to pin them · click again to release.</div>
+<div id="twinmap"></div>
+
+<script>
+(function () {
+  const byId = {};
+  TWIN.cities.forEach(c => byId[c.id] = c);
+  const adj = TWIN.adj;
+
+  const map = L.map('twinmap', { worldCopyJump: true }).setView([25, 10], 2);
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+    attribution: '© OpenStreetMap, © CARTO', subdomains: 'abcd', maxZoom: 12
+  }).addTo(map);
+
+  const linkLayer = L.layerGroup().addTo(map);   // transient (hover) lines
+  const pinLayer  = L.layerGroup().addTo(map);    // pinned lines
+  const markers = {};
+  let pinned = new Set();
+
+  function radius(deg) { return Math.max(2.2, Math.min(13, 1.6 + Math.sqrt(deg) * 1.3)); }
+
+  // draw markers
+  TWIN.cities.forEach(c => {
+    const m = L.circleMarker([c.lat, c.lng], {
+      radius: radius(c.deg), color: '#fff', weight: 0.5,
+      fillColor: c.col, fillOpacity: 0.82
+    });
+    m.cityId = c.id;
+    m.bindTooltip(`${c.name}, ${c.country} — ${c.deg} link${c.deg===1?'':'s'}`,
+                  { className: 'twin-tip', direction: 'top' });
+    m.on('mouseover', () => showLinks(c.id, linkLayer, false));
+    m.on('mouseout',  () => { if (!pinned.size) linkLayer.clearLayers(); else redrawPins(); });
+    m.on('click', () => togglePin(c.id));
+    m.addTo(map);
+    markers[c.id] = m;
+  });
+
+  function lineFor(a, b, opts) {
+    let lng2 = b.lng;
+    if (Math.abs(b.lng - a.lng) > 180) lng2 += (b.lng > a.lng ? -360 : 360); // shortest path
+    return L.polyline([[a.lat, a.lng], [b.lat, lng2]], opts);
+  }
+
+  function showLinks(id, layer, persistent) {
+    layer.clearLayers();
+    const a = byId[id];
+    let nbs = adj[id] || [];
+    if (!Array.isArray(nbs)) nbs = [nbs];   // jsonlite unboxes single-element arrays
+    nbs.forEach(nid => {
+      const b = byId[nid]; if (!b) return;
+      lineFor(a, b, {
+        color: a.col, weight: persistent ? 1.6 : 1.1,
+        opacity: persistent ? 0.85 : 0.6
+      }).addTo(layer);
+    });
+    L.circleMarker([a.lat, a.lng], {
+      radius: radius(a.deg) + 3, color: '#111', weight: 2, fill: false
+    }).addTo(layer);
+
+    const info = document.getElementById('twin-info');
+    if (!persistent) {
+      info.innerHTML = `<b>${a.name}</b>, ${a.country}` +
+        `<span class="twin-pill">${nbs.length} twin link${nbs.length===1?'':'s'}</span>` +
+        (pinned.size ? ` &nbsp;·&nbsp; ${pinned.size} pinned` : '');
+    }
+  }
+
+  function redrawPins() {
+    linkLayer.clearLayers();
+    pinLayer.clearLayers();
+    pinned.forEach(id => showLinks(id, pinLayer, true));
+  }
+
+  function togglePin(id) {
+    if (pinned.has(id)) pinned.delete(id); else pinned.add(id);
+    redrawPins();
+    const info = document.getElementById('twin-info');
+    info.innerHTML = pinned.size
+      ? `<b>${pinned.size}</b> cit${pinned.size===1?'y':'ies'} pinned` +
+        `<span class="twin-pill">click a pinned city to release</span>`
+      : 'Hover any city to see its twin links · click to pin them.';
+  }
+})();
+</script>
+```
+
+::: {.callout-tip}
+## Try this
+Pin **Saint Petersburg** and **Rio de Janeiro** — the two most-twinned cities in
+the data (96 and 94 links) — and watch their fans of lines reach across nearly
+every continent. Then pin a mid-sized European capital next to them: the
+contrast in reach is the whole story of sister-city diplomacy.
+:::
+
+```{r setup-static}
+#| include: false
+theme_set(theme_minimal(base_size = 13))
+```
+
+## Who twins with whom?
+
+The interactive map shows individual cities; zoom out and the network has a
+strong *regional* grain. Counting links by the continents they connect:
+
+```{r flow-matrix}
+#| fig-height: 5.5
+#| fig-cap: "Twin links by the pair of continents they connect. The diagonal (within-continent) dominates — sister cities are mostly neighbours."
+
+cont <- cities |> select(id, continent)
+
+pairs <- links |>
+  left_join(cont, by = c("source" = "id")) |>
+  rename(c1 = continent) |>
+  left_join(cont, by = c("target" = "id")) |>
+  rename(c2 = continent) |>
+  filter(!is.na(c1), !is.na(c2)) |>
+  mutate(
+    a = pmin(c1, c2), b = pmax(c1, c2)
+  ) |>
+  count(a, b)
+
+ggplot(pairs, aes(a, b, fill = n)) +
+  geom_tile(colour = "white", linewidth = 1) +
+  geom_text(aes(label = n), size = 3.4,
+            colour = ifelse(pairs$n > max(pairs$n) / 2, "white", "grey20")) +
+  scale_fill_gradient(low = "#eaf0f6", high = "#3f7cac", name = "links") +
+  labs(
+    title = "Sister cities mostly stay close to home",
+    subtitle = "Number of twin links between each pair of continents",
+    x = NULL, y = NULL
+  ) +
+  theme(axis.text.x = element_text(angle = 30, hjust = 1),
+        panel.grid = element_blank())
+```
+
+The within-continent diagonal dominates — Europe–Europe especially, the legacy
+of post-war Franco-German *jumelage* and the EU's deliberate cultivation of
+cross-border municipal ties. The brightest off-diagonal cell is usually
+Europe paired with Asia, reflecting the dense web of European–Chinese and
+European–Japanese partnerships built during the late-20th-century opening.
+
+## The most connected cities
+
+```{r top-cities}
+#| fig-height: 5.5
+#| fig-cap: "The 15 most-twinned cities."
+
+deg |>
+  left_join(cities, by = "id") |>
+  slice_max(deg, n = 15) |>
+  mutate(label = paste0(name, ", ", country),
+         label = fct_reorder(label, deg)) |>
+  ggplot(aes(deg, label, fill = continent)) +
+  geom_col() +
+  scale_fill_manual(values = cont_pal, name = NULL) +
+  labs(
+    title = "Saint Petersburg and Rio lead a very long tail",
+    subtitle = "Number of sister-city links",
+    x = "Twin links", y = NULL
+  )
+```
+
+A handful of "diplomatic hub" cities (Saint Petersburg, Rio, Istanbul, Shanghai)
+carry dozens of links each, while the median city in the data has just one or
+two — the signature of a network where a few well-resourced municipalities run
+active international offices and most do not.
