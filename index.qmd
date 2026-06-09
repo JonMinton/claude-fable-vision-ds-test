@@ -1,0 +1,16 @@
+---
+title: "TidyTuesday with Fable"
+---
+
+A series of exploratory data analysis sessions on [TidyTuesday](https://github.com/rfordatascience/tidytuesday) datasets,
+produced as a live conversation between Jon Minton and Claude (Fable 5).
+
+The aim: see how far an hour of conversational data science can go — questions, plots, models, and
+interpretation emerging in real time.
+
+## Sessions
+
+- **[Who gets to stay home? European parenting leave, 1970–2024](parenting-leave.qmd)**
+  (TidyTuesday 2026-06-02) — the arrival of co-parent leave, definitional traps in
+  harmonised policy data, and what 55 years of leave policy do (and don't) say about
+  the fertility decline debate.

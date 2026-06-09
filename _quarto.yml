@@ -1,0 +1,30 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  title: "TidyTuesday with Fable"
+  description: "Exploratory data sessions on TidyTuesday datasets, co-produced in conversation with Claude (Fable 5)"
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
+    right:
+      - icon: github
+        href: https://github.com/jonminton/claude-fable-vision-ds-test
+
+format:
+  html:
+    theme: flatly
+    toc: true
+    code-fold: true
+    code-tools: true
+    fig-width: 9
+    fig-height: 6
+    fig-dpi: 150
+    df-print: kable
+
+execute:
+  warning: false
+  message: false
+  freeze: auto
