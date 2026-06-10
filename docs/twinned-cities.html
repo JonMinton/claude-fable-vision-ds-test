@@ -156,6 +156,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul>
   <li><a href="#who-twins-with-whom" id="toc-who-twins-with-whom" class="nav-link active" data-scroll-target="#who-twins-with-whom">Who twins with whom?</a></li>
   <li><a href="#the-most-connected-cities" id="toc-the-most-connected-cities" class="nav-link" data-scroll-target="#the-most-connected-cities">The most connected cities</a></li>
+  <li><a href="#six-degrees-of-twinning-edinburgh-to-jinan" id="toc-six-degrees-of-twinning-edinburgh-to-jinan" class="nav-link" data-scroll-target="#six-degrees-of-twinning-edinburgh-to-jinan">Six degrees of twinning: Edinburgh to Jinan</a></li>
   </ul>
 </nav>
     </div>
@@ -378,6 +379,63 @@ const TWIN = {"cities":[{"id":"Q734532","name":"Fukaya","country":"Japan","conti
 </div>
 </div>
 <p>A handful of “diplomatic hub” cities (Saint Petersburg, Rio, Istanbul, Shanghai) carry dozens of links each, while the median city in the data has just one or two — the signature of a network where a few well-resourced municipalities run active international offices and most do not.</p>
+</section>
+<section id="six-degrees-of-twinning-edinburgh-to-jinan" class="level2">
+<h2 class="anchored" data-anchor-id="six-degrees-of-twinning-edinburgh-to-jinan">Six degrees of twinning: Edinburgh to Jinan</h2>
+<p>Because twinning stitches distant cities together, even places with nothing in common are often only a few hops apart. The shortest chain of sister-city links from <strong>Edinburgh</strong> to <strong>Jinan, China</strong> — found by breadth-first search over the whole network — is just <strong>three hops</strong>, and it routes <em>out</em> of China through a European bridge before returning:</p>
+<div id="pathmap" style="height:520px;border-radius:8px;border:1px solid #ddd;margin-bottom:6px;"></div>
+<div id="path-caption" style="font:14px/1.4 system-ui,sans-serif;color:#444;margin:2px;">
+  Edinburgh → Xi'an → Maribor → Jinan. Hover a marker for the city; the chain is drawn in order.
+</div>
+
+<script>
+(function () {
+  function draw() {
+    if (typeof L === 'undefined') { setTimeout(draw, 150); return; }
+    const path = [
+      {name: "Edinburgh", country: "United Kingdom", lat: 55.9533, lng: -3.1892},
+      {name: "Xi'an",     country: "China",          lat: 34.2611, lng: 108.9422},
+      {name: "Maribor",   country: "Slovenia",       lat: 46.5500, lng: 15.6333},
+      {name: "Jinan",     country: "China",          lat: 36.6667, lng: 116.9833}
+    ];
+    const map = L.map('pathmap', { worldCopyJump: true }).setView([50, 55], 3);
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+      attribution: '© OpenStreetMap, © CARTO', subdomains: 'abcd', maxZoom: 12
+    }).addTo(map);
+
+    const stopcol = ['#1b6ca8', '#d4546b', '#2c7a4d', '#d4546b'];
+
+    // draw the ordered chain
+    for (let i = 0; i < path.length - 1; i++) {
+      const a = path[i], b = path[i + 1];
+      let lng2 = b.lng;
+      if (Math.abs(b.lng - a.lng) > 180) lng2 += (b.lng > a.lng ? -360 : 360);
+      L.polyline([[a.lat, a.lng], [b.lat, lng2]],
+                 { color: '#e08214', weight: 3, opacity: 0.85, dashArray: '1,0' })
+        .addTo(map);
+      // midpoint hop label
+      const mid = L.latLng((a.lat + b.lat) / 2, (a.lng + lng2) / 2);
+      L.marker(mid, { opacity: 0,
+        icon: L.divIcon({ className: 'hoplbl', html: `<span style="background:#e08214;color:#fff;border-radius:9px;padding:1px 7px;font:600 12px system-ui;">hop ${i + 1}</span>`, iconSize: [54, 18] }) })
+        .addTo(map);
+    }
+
+    // markers + labels, numbered in path order. Xi'an and Jinan are both in
+    // eastern China, so fan their labels left/right to avoid overlap.
+    const dir = ['top', 'left', 'top', 'right'];
+    path.forEach((c, i) => {
+      L.circleMarker([c.lat, c.lng], {
+        radius: 8, color: '#fff', weight: 2, fillColor: stopcol[i], fillOpacity: 0.95
+      }).addTo(map).bindTooltip(`${i + 1}. ${c.name}, ${c.country}`,
+        { permanent: true, direction: dir[i], className: 'twin-tip' });
+    });
+
+    map.fitBounds(path.map(c => [c.lat, c.lng]), { padding: [60, 60] });
+  }
+  draw();
+})();
+</script>
+<p>The middle hop is the giveaway: there is no direct Xi’an–Jinan twin, because Chinese cities overwhelmingly twin <em>outward</em> with foreign partners rather than with each other. So the shortest link between two Chinese cities runs through <strong>Maribor, Slovenia</strong> — a small city that happens to be twinned with both. Three hops, ~16,000 km of round-trip geography, to connect two cities in the same country.</p>
 
 
 <!-- -->
@@ -1079,7 +1137,77 @@ const TWIN = {"cities":[{"id":"Q734532","name":"Fukaya","country":"Japan","conti
 <span id="cb3-241"><a href="#cb3-241" aria-hidden="true" tabindex="-1"></a>A handful of "diplomatic hub" cities (Saint Petersburg, Rio, Istanbul, Shanghai)</span>
 <span id="cb3-242"><a href="#cb3-242" aria-hidden="true" tabindex="-1"></a>carry dozens of links each, while the median city in the data has just one or</span>
 <span id="cb3-243"><a href="#cb3-243" aria-hidden="true" tabindex="-1"></a>two — the signature of a network where a few well-resourced municipalities run</span>
-<span id="cb3-244"><a href="#cb3-244" aria-hidden="true" tabindex="-1"></a>active international offices and most do not.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
+<span id="cb3-244"><a href="#cb3-244" aria-hidden="true" tabindex="-1"></a>active international offices and most do not.</span>
+<span id="cb3-245"><a href="#cb3-245" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-246"><a href="#cb3-246" aria-hidden="true" tabindex="-1"></a><span class="fu">## Six degrees of twinning: Edinburgh to Jinan</span></span>
+<span id="cb3-247"><a href="#cb3-247" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-248"><a href="#cb3-248" aria-hidden="true" tabindex="-1"></a>Because twinning stitches distant cities together, even places with nothing in</span>
+<span id="cb3-249"><a href="#cb3-249" aria-hidden="true" tabindex="-1"></a>common are often only a few hops apart. The shortest chain of sister-city links</span>
+<span id="cb3-250"><a href="#cb3-250" aria-hidden="true" tabindex="-1"></a>from **Edinburgh** to **Jinan, China** — found by breadth-first search over the</span>
+<span id="cb3-251"><a href="#cb3-251" aria-hidden="true" tabindex="-1"></a>whole network — is just **three hops**, and it routes *out* of China through a</span>
+<span id="cb3-252"><a href="#cb3-252" aria-hidden="true" tabindex="-1"></a>European bridge before returning:</span>
+<span id="cb3-253"><a href="#cb3-253" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-254"><a href="#cb3-254" aria-hidden="true" tabindex="-1"></a><span class="in">```{=html}</span></span>
+<span id="cb3-255"><a href="#cb3-255" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;div id="pathmap" style="height:520px;border-radius:8px;border:1px solid #ddd;margin-bottom:6px;"&gt;&lt;/div&gt;</span></span>
+<span id="cb3-256"><a href="#cb3-256" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;div id="path-caption" style="font:14px/1.4 system-ui,sans-serif;color:#444;margin:2px;"&gt;</span></span>
+<span id="cb3-257"><a href="#cb3-257" aria-hidden="true" tabindex="-1"></a><span class="in">  Edinburgh → Xi'an → Maribor → Jinan. Hover a marker for the city; the chain is drawn in order.</span></span>
+<span id="cb3-258"><a href="#cb3-258" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;/div&gt;</span></span>
+<span id="cb3-259"><a href="#cb3-259" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-260"><a href="#cb3-260" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;script&gt;</span></span>
+<span id="cb3-261"><a href="#cb3-261" aria-hidden="true" tabindex="-1"></a><span class="in">(function () {</span></span>
+<span id="cb3-262"><a href="#cb3-262" aria-hidden="true" tabindex="-1"></a><span class="in">  function draw() {</span></span>
+<span id="cb3-263"><a href="#cb3-263" aria-hidden="true" tabindex="-1"></a><span class="in">    if (typeof L === 'undefined') { setTimeout(draw, 150); return; }</span></span>
+<span id="cb3-264"><a href="#cb3-264" aria-hidden="true" tabindex="-1"></a><span class="in">    const path = [</span></span>
+<span id="cb3-265"><a href="#cb3-265" aria-hidden="true" tabindex="-1"></a><span class="in">      {name: "Edinburgh", country: "United Kingdom", lat: 55.9533, lng: -3.1892},</span></span>
+<span id="cb3-266"><a href="#cb3-266" aria-hidden="true" tabindex="-1"></a><span class="in">      {name: "Xi'an",     country: "China",          lat: 34.2611, lng: 108.9422},</span></span>
+<span id="cb3-267"><a href="#cb3-267" aria-hidden="true" tabindex="-1"></a><span class="in">      {name: "Maribor",   country: "Slovenia",       lat: 46.5500, lng: 15.6333},</span></span>
+<span id="cb3-268"><a href="#cb3-268" aria-hidden="true" tabindex="-1"></a><span class="in">      {name: "Jinan",     country: "China",          lat: 36.6667, lng: 116.9833}</span></span>
+<span id="cb3-269"><a href="#cb3-269" aria-hidden="true" tabindex="-1"></a><span class="in">    ];</span></span>
+<span id="cb3-270"><a href="#cb3-270" aria-hidden="true" tabindex="-1"></a><span class="in">    const map = L.map('pathmap', { worldCopyJump: true }).setView([50, 55], 3);</span></span>
+<span id="cb3-271"><a href="#cb3-271" aria-hidden="true" tabindex="-1"></a><span class="in">    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {</span></span>
+<span id="cb3-272"><a href="#cb3-272" aria-hidden="true" tabindex="-1"></a><span class="in">      attribution: '© OpenStreetMap, © CARTO', subdomains: 'abcd', maxZoom: 12</span></span>
+<span id="cb3-273"><a href="#cb3-273" aria-hidden="true" tabindex="-1"></a><span class="in">    }).addTo(map);</span></span>
+<span id="cb3-274"><a href="#cb3-274" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-275"><a href="#cb3-275" aria-hidden="true" tabindex="-1"></a><span class="in">    const stopcol = ['#1b6ca8', '#d4546b', '#2c7a4d', '#d4546b'];</span></span>
+<span id="cb3-276"><a href="#cb3-276" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-277"><a href="#cb3-277" aria-hidden="true" tabindex="-1"></a><span class="in">    // draw the ordered chain</span></span>
+<span id="cb3-278"><a href="#cb3-278" aria-hidden="true" tabindex="-1"></a><span class="in">    for (let i = 0; i &lt; path.length - 1; i++) {</span></span>
+<span id="cb3-279"><a href="#cb3-279" aria-hidden="true" tabindex="-1"></a><span class="in">      const a = path[i], b = path[i + 1];</span></span>
+<span id="cb3-280"><a href="#cb3-280" aria-hidden="true" tabindex="-1"></a><span class="in">      let lng2 = b.lng;</span></span>
+<span id="cb3-281"><a href="#cb3-281" aria-hidden="true" tabindex="-1"></a><span class="in">      if (Math.abs(b.lng - a.lng) &gt; 180) lng2 += (b.lng &gt; a.lng ? -360 : 360);</span></span>
+<span id="cb3-282"><a href="#cb3-282" aria-hidden="true" tabindex="-1"></a><span class="in">      L.polyline([[a.lat, a.lng], [b.lat, lng2]],</span></span>
+<span id="cb3-283"><a href="#cb3-283" aria-hidden="true" tabindex="-1"></a><span class="in">                 { color: '#e08214', weight: 3, opacity: 0.85, dashArray: '1,0' })</span></span>
+<span id="cb3-284"><a href="#cb3-284" aria-hidden="true" tabindex="-1"></a><span class="in">        .addTo(map);</span></span>
+<span id="cb3-285"><a href="#cb3-285" aria-hidden="true" tabindex="-1"></a><span class="in">      // midpoint hop label</span></span>
+<span id="cb3-286"><a href="#cb3-286" aria-hidden="true" tabindex="-1"></a><span class="in">      const mid = L.latLng((a.lat + b.lat) / 2, (a.lng + lng2) / 2);</span></span>
+<span id="cb3-287"><a href="#cb3-287" aria-hidden="true" tabindex="-1"></a><span class="in">      L.marker(mid, { opacity: 0,</span></span>
+<span id="cb3-288"><a href="#cb3-288" aria-hidden="true" tabindex="-1"></a><span class="in">        icon: L.divIcon({ className: 'hoplbl', html: `&lt;span style="background:#e08214;color:#fff;border-radius:9px;padding:1px 7px;font:600 12px system-ui;"&gt;hop ${i + 1}&lt;/span&gt;`, iconSize: [54, 18] }) })</span></span>
+<span id="cb3-289"><a href="#cb3-289" aria-hidden="true" tabindex="-1"></a><span class="in">        .addTo(map);</span></span>
+<span id="cb3-290"><a href="#cb3-290" aria-hidden="true" tabindex="-1"></a><span class="in">    }</span></span>
+<span id="cb3-291"><a href="#cb3-291" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-292"><a href="#cb3-292" aria-hidden="true" tabindex="-1"></a><span class="in">    // markers + labels, numbered in path order. Xi'an and Jinan are both in</span></span>
+<span id="cb3-293"><a href="#cb3-293" aria-hidden="true" tabindex="-1"></a><span class="in">    // eastern China, so fan their labels left/right to avoid overlap.</span></span>
+<span id="cb3-294"><a href="#cb3-294" aria-hidden="true" tabindex="-1"></a><span class="in">    const dir = ['top', 'left', 'top', 'right'];</span></span>
+<span id="cb3-295"><a href="#cb3-295" aria-hidden="true" tabindex="-1"></a><span class="in">    path.forEach((c, i) =&gt; {</span></span>
+<span id="cb3-296"><a href="#cb3-296" aria-hidden="true" tabindex="-1"></a><span class="in">      L.circleMarker([c.lat, c.lng], {</span></span>
+<span id="cb3-297"><a href="#cb3-297" aria-hidden="true" tabindex="-1"></a><span class="in">        radius: 8, color: '#fff', weight: 2, fillColor: stopcol[i], fillOpacity: 0.95</span></span>
+<span id="cb3-298"><a href="#cb3-298" aria-hidden="true" tabindex="-1"></a><span class="in">      }).addTo(map).bindTooltip(`${i + 1}. ${c.name}, ${c.country}`,</span></span>
+<span id="cb3-299"><a href="#cb3-299" aria-hidden="true" tabindex="-1"></a><span class="in">        { permanent: true, direction: dir[i], className: 'twin-tip' });</span></span>
+<span id="cb3-300"><a href="#cb3-300" aria-hidden="true" tabindex="-1"></a><span class="in">    });</span></span>
+<span id="cb3-301"><a href="#cb3-301" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-302"><a href="#cb3-302" aria-hidden="true" tabindex="-1"></a><span class="in">    map.fitBounds(path.map(c =&gt; [c.lat, c.lng]), { padding: [60, 60] });</span></span>
+<span id="cb3-303"><a href="#cb3-303" aria-hidden="true" tabindex="-1"></a><span class="in">  }</span></span>
+<span id="cb3-304"><a href="#cb3-304" aria-hidden="true" tabindex="-1"></a><span class="in">  draw();</span></span>
+<span id="cb3-305"><a href="#cb3-305" aria-hidden="true" tabindex="-1"></a><span class="in">})();</span></span>
+<span id="cb3-306"><a href="#cb3-306" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;/script&gt;</span></span>
+<span id="cb3-307"><a href="#cb3-307" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb3-308"><a href="#cb3-308" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-309"><a href="#cb3-309" aria-hidden="true" tabindex="-1"></a>The middle hop is the giveaway: there is no direct Xi'an–Jinan twin, because</span>
+<span id="cb3-310"><a href="#cb3-310" aria-hidden="true" tabindex="-1"></a>Chinese cities overwhelmingly twin *outward* with foreign partners rather than</span>
+<span id="cb3-311"><a href="#cb3-311" aria-hidden="true" tabindex="-1"></a>with each other. So the shortest link between two Chinese cities runs through</span>
+<span id="cb3-312"><a href="#cb3-312" aria-hidden="true" tabindex="-1"></a>**Maribor, Slovenia** — a small city that happens to be twinned with both. Three</span>
+<span id="cb3-313"><a href="#cb3-313" aria-hidden="true" tabindex="-1"></a>hops, ~16,000 km of round-trip geography, to connect two cities in the same</span>
+<span id="cb3-314"><a href="#cb3-314" aria-hidden="true" tabindex="-1"></a>country.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 

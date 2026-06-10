@@ -242,3 +242,73 @@ A handful of "diplomatic hub" cities (Saint Petersburg, Rio, Istanbul, Shanghai)
 carry dozens of links each, while the median city in the data has just one or
 two — the signature of a network where a few well-resourced municipalities run
 active international offices and most do not.
+
+## Six degrees of twinning: Edinburgh to Jinan
+
+Because twinning stitches distant cities together, even places with nothing in
+common are often only a few hops apart. The shortest chain of sister-city links
+from **Edinburgh** to **Jinan, China** — found by breadth-first search over the
+whole network — is just **three hops**, and it routes *out* of China through a
+European bridge before returning:
+
+```{=html}
+<div id="pathmap" style="height:520px;border-radius:8px;border:1px solid #ddd;margin-bottom:6px;"></div>
+<div id="path-caption" style="font:14px/1.4 system-ui,sans-serif;color:#444;margin:2px;">
+  Edinburgh → Xi'an → Maribor → Jinan. Hover a marker for the city; the chain is drawn in order.
+</div>
+
+<script>
+(function () {
+  function draw() {
+    if (typeof L === 'undefined') { setTimeout(draw, 150); return; }
+    const path = [
+      {name: "Edinburgh", country: "United Kingdom", lat: 55.9533, lng: -3.1892},
+      {name: "Xi'an",     country: "China",          lat: 34.2611, lng: 108.9422},
+      {name: "Maribor",   country: "Slovenia",       lat: 46.5500, lng: 15.6333},
+      {name: "Jinan",     country: "China",          lat: 36.6667, lng: 116.9833}
+    ];
+    const map = L.map('pathmap', { worldCopyJump: true }).setView([50, 55], 3);
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+      attribution: '© OpenStreetMap, © CARTO', subdomains: 'abcd', maxZoom: 12
+    }).addTo(map);
+
+    const stopcol = ['#1b6ca8', '#d4546b', '#2c7a4d', '#d4546b'];
+
+    // draw the ordered chain
+    for (let i = 0; i < path.length - 1; i++) {
+      const a = path[i], b = path[i + 1];
+      let lng2 = b.lng;
+      if (Math.abs(b.lng - a.lng) > 180) lng2 += (b.lng > a.lng ? -360 : 360);
+      L.polyline([[a.lat, a.lng], [b.lat, lng2]],
+                 { color: '#e08214', weight: 3, opacity: 0.85, dashArray: '1,0' })
+        .addTo(map);
+      // midpoint hop label
+      const mid = L.latLng((a.lat + b.lat) / 2, (a.lng + lng2) / 2);
+      L.marker(mid, { opacity: 0,
+        icon: L.divIcon({ className: 'hoplbl', html: `<span style="background:#e08214;color:#fff;border-radius:9px;padding:1px 7px;font:600 12px system-ui;">hop ${i + 1}</span>`, iconSize: [54, 18] }) })
+        .addTo(map);
+    }
+
+    // markers + labels, numbered in path order. Xi'an and Jinan are both in
+    // eastern China, so fan their labels left/right to avoid overlap.
+    const dir = ['top', 'left', 'top', 'right'];
+    path.forEach((c, i) => {
+      L.circleMarker([c.lat, c.lng], {
+        radius: 8, color: '#fff', weight: 2, fillColor: stopcol[i], fillOpacity: 0.95
+      }).addTo(map).bindTooltip(`${i + 1}. ${c.name}, ${c.country}`,
+        { permanent: true, direction: dir[i], className: 'twin-tip' });
+    });
+
+    map.fitBounds(path.map(c => [c.lat, c.lng]), { padding: [60, 60] });
+  }
+  draw();
+})();
+</script>
+```
+
+The middle hop is the giveaway: there is no direct Xi'an–Jinan twin, because
+Chinese cities overwhelmingly twin *outward* with foreign partners rather than
+with each other. So the shortest link between two Chinese cities runs through
+**Maribor, Slovenia** — a small city that happens to be twinned with both. Three
+hops, ~16,000 km of round-trip geography, to connect two cities in the same
+country.
