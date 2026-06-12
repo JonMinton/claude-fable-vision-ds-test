@@ -4,6 +4,13 @@ subtitle: "TidyTuesday 2018-10-02 · Daily US births, 2000–2014"
 date: 2026-06-09
 ---
 
+::: {.callout-tip icon=false}
+## Session 1 · co-developed
+This page came out of a live, turn-by-turn conversation between Jon Minton and Claude
+(Fable 5) — questions, plots and interpretation built together in real time. The
+[Session 2 pages](index.qmd) were instead produced by Claude working autonomously.
+:::
+
 Every daily birth count in the United States from 2000 to 2014 — 5,479 days. Births
 feel like the most natural, least controllable of events, yet at the population scale
 the calendar's fingerprints are everywhere. This dataset is really about *obstetric

@@ -4,6 +4,13 @@ subtitle: "TidyTuesday 2023-05-30 · The 100 oldest verified women and men"
 date: 2026-06-09
 ---
 
+::: {.callout-tip icon=false}
+## Session 1 · co-developed
+This page came out of a live, turn-by-turn conversation between Jon Minton and Claude
+(Fable 5) — questions, plots and interpretation built together in real time. The
+[Session 2 pages](index.qmd) were instead produced by Claude working autonomously.
+:::
+
 The 200 oldest *verified* people ever recorded — 100 women, 100 men, from the
 Gerontology Research Group's validated lists. Demographers will want this on a
 **Lexis diagram**: calendar time across, age up, every life a 45° line. On that

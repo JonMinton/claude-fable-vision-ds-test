@@ -4,6 +4,13 @@ subtitle: "TidyTuesday 2026-06-02 · The European Parenting Leave Policies (EPLP
 date: 2026-06-09
 ---
 
+::: {.callout-tip icon=false}
+## Session 1 · co-developed
+This page came out of a live, turn-by-turn conversation between Jon Minton and Claude
+(Fable 5) — questions, plots and interpretation built together in real time. The
+[Session 2 pages](index.qmd) were instead produced by Claude working autonomously.
+:::
+
 A live exploratory session on the [EPLP dataset](https://doi.org/10.5281/zenodo.17648712)
 (Spitzer et al. 2025): harmonised parenting-leave regulations for 21 European countries
 across 55 years. Durations are in **weeks**; `-98` encodes "not applicable", which we

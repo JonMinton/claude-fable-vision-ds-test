@@ -153,7 +153,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#sessions" id="toc-sessions" class="nav-link active" data-scroll-target="#sessions">Sessions</a></li>
+  <li><a href="#session-2" id="toc-session-2" class="nav-link active" data-scroll-target="#session-2">Session 2 · autonomously developed</a></li>
+  <li><a href="#session-1" id="toc-session-1" class="nav-link" data-scroll-target="#session-1">Session 1 · co-developed</a></li>
   </ul>
 </nav>
     </div>
@@ -179,10 +180,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>A series of exploratory data analysis sessions on <a href="https://github.com/rfordatascience/tidytuesday">TidyTuesday</a> datasets, produced as a live conversation between Jon Minton and Claude (Fable 5).</p>
-<p>The aim: see how far an hour of conversational data science can go — questions, plots, models, and interpretation emerging in real time.</p>
-<section id="sessions" class="level2">
-<h2 class="anchored" data-anchor-id="sessions">Sessions</h2>
+<p>A series of exploratory data analysis sessions on <a href="https://github.com/rfordatascience/tidytuesday">TidyTuesday</a> datasets, produced by Jon Minton and Claude (Fable 5) — in two distinct working modes.</p>
+<p>The sessions come in two kinds, and the site keeps them clearly separated because the <em>way</em> a page was made is part of what it is:</p>
+<ul>
+<li><strong>Session 1 — co-developed.</strong> Built in a live, turn-by-turn conversation: Jon asks, Claude explores, they decide together what’s interesting and how to show it. Every Session 1 page carries a blue badge at the top.</li>
+<li><strong>Session 2 — autonomously developed.</strong> Claude chose the datasets, the analytical angles, the visual designs and wrote the prose on its own, with no human steering during the session — checking its own figures in a browser as it went. Every Session 2 page carries a grey badge at the top.</li>
+</ul>
+<p>There’s a short <strong><a href="./reflection.html">reflection on the two modes</a></strong> comparing how they felt and what came out differently.</p>
+<section id="session-2" class="level2">
+<h2 class="anchored" data-anchor-id="session-2">Session 2 · autonomously developed</h2>
+<p>Fable’s own picks, analyses and designs — one page in each of four registers.</p>
+<ul>
+<li><strong><a href="./probability-phrases.html">How likely is ‘likely’?</a></strong> <em>(statistical inference)</em> (TidyTuesday 2026-03-10) — 5,174 people put numbers on 19 probability phrases. A Bradley–Terry model recovers a shared latent scale from pairwise choices alone, the public is tested against the UK intelligence “yardstick,” and a within-person coherence curve turns words into a psychophysics experiment.</li>
+<li><strong><a href="./tortoise-island.html">Thirteen males per female: an island running out of mothers</a></strong> <em>(substantive demography)</em> (TidyTuesday 2026-03-03) — sixteen years of capture data on the Hermann’s tortoises of Golem Grad, where sexual harassment, emaciation and tiny clutches compound into a projected extinction. The mechanism of a “demographic suicide,” measurement by measurement.</li>
+<li><strong><a href="./pi-digits.html">A million digits of π, and not a pattern in sight</a></strong> <em>(novel visuals + randomness theory)</em> (TidyTuesday 2026-03-24) — a turtle walk through 100,000 digits, a convergence funnel, a digit-pair heatmap and the Feynman point: every test for pattern comes back empty, on a number that is the opposite of random.</li>
+<li><strong><a href="./ocean-temperature.html">How a cold sea breathes</a></strong> <em>(physical time series)</em> (TidyTuesday 2026-03-31) — eight years of a Nova Scotia water column as a depth–time heatmap: the annual heat pulse damping and lagging as it sinks, and the winter weeks when the sea turns upside-down.</li>
+</ul>
+</section>
+<section id="session-1" class="level2">
+<h2 class="anchored" data-anchor-id="session-1">Session 1 · co-developed</h2>
+<p>Built live, in conversation — the original sessions.</p>
 <ul>
 <li><strong><a href="./parenting-leave.html">Who gets to stay home? European parenting leave, 1970–2024</a></strong> (TidyTuesday 2026-06-02) — the arrival of co-parent leave, definitional traps in harmonised policy data, and what 55 years of leave policy do (and don’t) say about the fertility decline debate.</li>
 <li><strong><a href="./game-films.html">Is the video game movie curse lifting?</a></strong> (TidyTuesday 2026-06-09) — a 15-minute sprint: the ¥5bn Pokémon box-office trap, three decades of rotten reviews turning a corner in 2019, and why opening-night audiences grade these films a letter or three above the critics.</li>
@@ -653,34 +670,72 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "TidyTuesday with Fable"</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>A series of exploratory data analysis sessions on <span class="co">[</span><span class="ot">TidyTuesday</span><span class="co">](https://github.com/rfordatascience/tidytuesday)</span> datasets,</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>produced as a live conversation between Jon Minton and Claude (Fable 5).</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>A series of exploratory data analysis sessions on <span class="co">[</span><span class="ot">TidyTuesday</span><span class="co">](https://github.com/rfordatascience/tidytuesday)</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>datasets, produced by Jon Minton and Claude (Fable 5) — in two distinct working modes.</span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>The aim: see how far an hour of conversational data science can go — questions, plots, models, and</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>interpretation emerging in real time.</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>The sessions come in two kinds, and the site keeps them clearly separated because the</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>*way* a page was made is part of what it is:</span>
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="fu">## Sessions</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**[Who gets to stay home? European parenting leave, 1970–2024](parenting-leave.qmd)**</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>  (TidyTuesday 2026-06-02) — the arrival of co-parent leave, definitional traps in</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>  harmonised policy data, and what 55 years of leave policy do (and don't) say about</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>  the fertility decline debate.</span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**[Is the video game movie curse lifting?](game-films.qmd)**</span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>  (TidyTuesday 2026-06-09) — a 15-minute sprint: the ¥5bn Pokémon box-office trap,</span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>  three decades of rotten reviews turning a corner in 2019, and why opening-night</span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>  audiences grade these films a letter or three above the critics.</span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**[A garden of glyphs: edible plants as flowers](edible-plants.qmd)**</span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>  (TidyTuesday 2026-02-03) — Chernoff faces, reimagined as flowers: each crop's</span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>  growing requirements rendered as petals, centre and colour, iris-dataset style.</span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**[The world, sister by sister](twinned-cities.qmd)**</span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>  (TidyTuesday 2026-05-12) — an interactive Leaflet map of 10,596 sister-city links:</span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>  hover to fan out a city's twins, click to pin and compare.</span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**[The frontier of human longevity, on a Lexis plane](oldest-people.qmd)**</span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>  (TidyTuesday 2023-05-30) — the 200 oldest verified people as lifelines on a Lexis</span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>  diagram, the stagnating longevity record, and the Calment anomaly.</span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**[Birth is scheduled: calendar effects in US births](us-births.qmd)**</span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>  (TidyTuesday 2018-10-02) — the working-week birth, holiday troughs, and the</span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>  measurable 5.3% dip on Friday the 13th.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Session 1 — co-developed.** Built in a live, turn-by-turn conversation: Jon asks,</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  Claude explores, they decide together what's interesting and how to show it. Every</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  Session 1 page carries a blue badge at the top.</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Session 2 — autonomously developed.** Claude chose the datasets, the analytical</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>  angles, the visual designs and wrote the prose on its own, with no human steering</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>  during the session — checking its own figures in a browser as it went. Every</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>  Session 2 page carries a grey badge at the top.</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>There's a short **[reflection on the two modes](reflection.qmd)** comparing how they</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>felt and what came out differently.</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="fu">## Session 2 · autonomously developed {#session-2}</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>Fable's own picks, analyses and designs — one page in each of four registers.</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**[How likely is 'likely'?](probability-phrases.qmd)** *(statistical inference)*</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>  (TidyTuesday 2026-03-10) — 5,174 people put numbers on 19 probability phrases. A</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>  Bradley–Terry model recovers a shared latent scale from pairwise choices alone, the</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>  public is tested against the UK intelligence "yardstick," and a within-person</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>  coherence curve turns words into a psychophysics experiment.</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**[Thirteen males per female: an island running out of mothers](tortoise-island.qmd)**</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>  *(substantive demography)*</span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>  (TidyTuesday 2026-03-03) — sixteen years of capture data on the Hermann's tortoises</span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>  of Golem Grad, where sexual harassment, emaciation and tiny clutches compound into a</span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>  projected extinction. The mechanism of a "demographic suicide," measurement by</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>  measurement.</span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**[A million digits of π, and not a pattern in sight](pi-digits.qmd)**</span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>  *(novel visuals + randomness theory)*</span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>  (TidyTuesday 2026-03-24) — a turtle walk through 100,000 digits, a convergence</span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>  funnel, a digit-pair heatmap and the Feynman point: every test for pattern comes</span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>  back empty, on a number that is the opposite of random.</span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**[How a cold sea breathes](ocean-temperature.qmd)** *(physical time series)*</span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>  (TidyTuesday 2026-03-31) — eight years of a Nova Scotia water column as a</span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>  depth–time heatmap: the annual heat pulse damping and lagging as it sinks, and the</span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>  winter weeks when the sea turns upside-down.</span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a><span class="fu">## Session 1 · co-developed {#session-1}</span></span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>Built live, in conversation — the original sessions.</span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**[Who gets to stay home? European parenting leave, 1970–2024](parenting-leave.qmd)**</span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>  (TidyTuesday 2026-06-02) — the arrival of co-parent leave, definitional traps in</span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a>  harmonised policy data, and what 55 years of leave policy do (and don't) say about</span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a>  the fertility decline debate.</span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**[Is the video game movie curse lifting?](game-films.qmd)**</span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a>  (TidyTuesday 2026-06-09) — a 15-minute sprint: the ¥5bn Pokémon box-office trap,</span>
+<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a>  three decades of rotten reviews turning a corner in 2019, and why opening-night</span>
+<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a>  audiences grade these films a letter or three above the critics.</span>
+<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**[A garden of glyphs: edible plants as flowers](edible-plants.qmd)**</span>
+<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a>  (TidyTuesday 2026-02-03) — Chernoff faces, reimagined as flowers: each crop's</span>
+<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a>  growing requirements rendered as petals, centre and colour, iris-dataset style.</span>
+<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**[The world, sister by sister](twinned-cities.qmd)**</span>
+<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a>  (TidyTuesday 2026-05-12) — an interactive Leaflet map of 10,596 sister-city links:</span>
+<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a>  hover to fan out a city's twins, click to pin and compare.</span>
+<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**[The frontier of human longevity, on a Lexis plane](oldest-people.qmd)**</span>
+<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a>  (TidyTuesday 2023-05-30) — the 200 oldest verified people as lifelines on a Lexis</span>
+<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a>  diagram, the stagnating longevity record, and the Calment anomaly.</span>
+<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**[Birth is scheduled: calendar effects in US births](us-births.qmd)**</span>
+<span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a>  (TidyTuesday 2018-10-02) — the working-week birth, holiday troughs, and the</span>
+<span id="cb1-70"><a href="#cb1-70" aria-hidden="true" tabindex="-1"></a>  measurable 5.3% dip on Friday the 13th.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 

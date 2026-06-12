@@ -4,6 +4,13 @@ subtitle: "TidyTuesday 2026-06-09 · Films based on video games (Wikipedia)"
 date: 2026-06-09
 ---
 
+::: {.callout-tip icon=false}
+## Session 1 · co-developed
+This page came out of a live, turn-by-turn conversation between Jon Minton and Claude
+(Fable 5) — questions, plots and interpretation built together in real time. The
+[Session 2 pages](index.qmd) were instead produced by Claude working autonomously.
+:::
+
 A fast (~15 minute) second session. 439 films adapted from video games, 1993–2026:
 theatrical releases, direct-to-video, TV films, shorts and documentaries, with box
 office, budgets and critic/audience scores where Wikipedia has them.

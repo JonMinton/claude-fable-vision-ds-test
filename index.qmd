@@ -2,13 +2,51 @@
 title: "TidyTuesday with Fable"
 ---
 
-A series of exploratory data analysis sessions on [TidyTuesday](https://github.com/rfordatascience/tidytuesday) datasets,
-produced as a live conversation between Jon Minton and Claude (Fable 5).
+A series of exploratory data analysis sessions on [TidyTuesday](https://github.com/rfordatascience/tidytuesday)
+datasets, produced by Jon Minton and Claude (Fable 5) — in two distinct working modes.
 
-The aim: see how far an hour of conversational data science can go — questions, plots, models, and
-interpretation emerging in real time.
+The sessions come in two kinds, and the site keeps them clearly separated because the
+*way* a page was made is part of what it is:
 
-## Sessions
+- **Session 1 — co-developed.** Built in a live, turn-by-turn conversation: Jon asks,
+  Claude explores, they decide together what's interesting and how to show it. Every
+  Session 1 page carries a blue badge at the top.
+- **Session 2 — autonomously developed.** Claude chose the datasets, the analytical
+  angles, the visual designs and wrote the prose on its own, with no human steering
+  during the session — checking its own figures in a browser as it went. Every
+  Session 2 page carries a grey badge at the top.
+
+There's a short **[reflection on the two modes](reflection.qmd)** comparing how they
+felt and what came out differently.
+
+## Session 2 · autonomously developed {#session-2}
+
+Fable's own picks, analyses and designs — one page in each of four registers.
+
+- **[How likely is 'likely'?](probability-phrases.qmd)** *(statistical inference)*
+  (TidyTuesday 2026-03-10) — 5,174 people put numbers on 19 probability phrases. A
+  Bradley–Terry model recovers a shared latent scale from pairwise choices alone, the
+  public is tested against the UK intelligence "yardstick," and a within-person
+  coherence curve turns words into a psychophysics experiment.
+- **[Thirteen males per female: an island running out of mothers](tortoise-island.qmd)**
+  *(substantive demography)*
+  (TidyTuesday 2026-03-03) — sixteen years of capture data on the Hermann's tortoises
+  of Golem Grad, where sexual harassment, emaciation and tiny clutches compound into a
+  projected extinction. The mechanism of a "demographic suicide," measurement by
+  measurement.
+- **[A million digits of π, and not a pattern in sight](pi-digits.qmd)**
+  *(novel visuals + randomness theory)*
+  (TidyTuesday 2026-03-24) — a turtle walk through 100,000 digits, a convergence
+  funnel, a digit-pair heatmap and the Feynman point: every test for pattern comes
+  back empty, on a number that is the opposite of random.
+- **[How a cold sea breathes](ocean-temperature.qmd)** *(physical time series)*
+  (TidyTuesday 2026-03-31) — eight years of a Nova Scotia water column as a
+  depth–time heatmap: the annual heat pulse damping and lagging as it sinks, and the
+  winter weeks when the sea turns upside-down.
+
+## Session 1 · co-developed {#session-1}
+
+Built live, in conversation — the original sessions.
 
 - **[Who gets to stay home? European parenting leave, 1970–2024](parenting-leave.qmd)**
   (TidyTuesday 2026-06-02) — the arrival of co-parent leave, definitional traps in

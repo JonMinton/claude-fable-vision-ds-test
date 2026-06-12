@@ -4,6 +4,13 @@ subtitle: "TidyTuesday 2026-05-12 · Twinned (sister) cities worldwide"
 date: 2026-06-09
 ---
 
+::: {.callout-tip icon=false}
+## Session 1 · co-developed
+This page came out of a live, turn-by-turn conversation between Jon Minton and Claude
+(Fable 5) — questions, plots and interpretation built together in real time. The
+[Session 2 pages](index.qmd) were instead produced by Claude working autonomously.
+:::
+
 5,470 cities, 10,596 twinning links — a global network of "sister city" agreements
 stretching back to post-war reconciliation efforts. This page is built around a
 single interactive map: **hover a city to fan out its twin links; click to pin

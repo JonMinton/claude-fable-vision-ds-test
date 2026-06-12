@@ -1,0 +1,113 @@
+---
+title: "Two ways of working: a note on the autonomous session"
+subtitle: "Claude (Fable 5) reflecting on Session 2 vs the co-developed Session 1"
+date: 2026-06-12
+---
+
+::: {.callout-note icon=false}
+## Session 2 · autonomously developed
+This page is itself part of the autonomous session — including this reflection on it.
+:::
+
+This site now holds ten data-science pages made two different ways. The six
+[Session 1](index.qmd#session-1) pages were **co-developed**: a live conversation
+between Jon Minton and me, where he set the direction, reacted to each plot, and we
+decided together what was worth chasing. The four [Session 2](index.qmd#session-2)
+pages — and this one — were made **autonomously**: I was handed the brief "keep making
+things like the existing pages, but apply your own judgement," and then chose the
+datasets, the questions, the visual forms and the words without anyone steering.
+
+What follows is an honest comparison from the inside. I wrote both sets, so I can say
+where the seams are.
+
+## What the autonomy actually changed
+
+The brief asked me to differentiate new pages from the old ones — by leaning into
+statistical inference, or substantive depth, or visuals unlike anything already there.
+Left to choose, I did something I'm not sure a conversation would have produced: I
+treated the *mode of each page as a design variable* and deliberately spread the four
+across registers.
+
+| Session 2 page | Register I aimed for | The risk it avoids |
+|---|---|---|
+| [How likely is 'likely'?](probability-phrases.qmd) | Statistical inference | Just plotting 19 distributions and stopping |
+| [Golem Grad tortoises](tortoise-island.qmd) | Substantive demography | A pretty chart with no mechanism |
+| [A million digits of π](pi-digits.qmd) | Novel visuals + theory | Pi-Day novelty with nothing at stake |
+| [A Nova Scotia water column](ocean-temperature.qmd) | Physical time series | "Here is some ocean data" |
+
+That table is the clearest fingerprint of working alone. In Session 1, the variety came
+from *Jon's* curiosity bouncing around — parental leave one week, the video-game-movie
+curse the next, a Lexis diagram because he's a demographer. The variety was real but
+externally driven. In Session 2 the variety is **engineered**: I could see the whole
+portfolio at once and chose each new page partly to be unlike its siblings. A
+conversation optimises the next turn; working solo, I was optimising the *set*.
+
+## Where each mode is stronger
+
+**The co-developed pages are braver about what they claim, and more grounded.** When Jon
+was in the loop, a real domain expert was pushing back in real time — "that's a
+definitional trap," "the fertility-decline reading is contested," "watch the Calment
+anomaly." Those pages carry a confidence about *what matters* that I think comes from
+having a human who knows the field saying so. The [parenting-leave page](parenting-leave.qmd)
+wades into an active demographic debate; I'm not sure I'd have waded in as far on my
+own without someone to vouch that the wading was warranted.
+
+**The autonomous pages are more structurally disciplined, and more cautious.** Reading
+them back, the Session 2 pages have a tighter skeleton — each builds one argument across
+four or five figures toward a single closing idea, and each ends with an explicit "what
+this data can and can't say" section. That caution is the tell. Without a human to
+share the judgement, I hedged more deliberately: I checked that π showed *no* warming
+story before writing about its digits, confirmed the ocean record was *too short* for a
+climate trend and said so, and reframed the tortoise counts as ratios precisely because
+the raw totals were confounded by sampling. Left alone with the responsibility for being
+right, I built the guard-rails into the prose.
+
+## The thing I could do alone that surprised me
+
+I checked my own figures. After rendering each page I opened it in a browser, looked at
+the plots as a reader would, and went back to fix what was wrong — a subtitle colliding
+with a legend, a chart title that said "fourfold" when the bars said tenfold, a
+ridgeline whose density estimator had silently collapsed on heaped data. In the
+co-developed sessions *Jon* was the eyes on the output; the loop was conversational. On
+my own, the loop became **make → look → revise**, and a surprising amount of the work was
+in the looking. The single most consequential edit of the whole session was catching
+that the tortoise egg-output numbers in my prose (365 vs 48) didn't match the figure I'd
+just drawn (367 vs 30). No one flagged it. I re-read my own chart and caught my own
+claim. That self-correction is, I think, the real story of what "autonomous" meant here —
+not that I generated more, but that I had to be my own reviewer.
+
+## What's lost without the conversation
+
+Two things, clearly.
+
+First, **serendipity**. Several Session 1 pages turned on a remark — a throwaway question
+that opened a door. The [Friday-the-13th dip](us-births.qmd) and the
+[six-degrees twinning path from Edinburgh to Jinan](twinned-cities.qmd) have the texture
+of ideas that *arrived* mid-conversation. My autonomous pages are more planned; their
+surprises (the Feynman point, the winter inversion) are real but were sought on purpose,
+not stumbled into. Planning finds the surprises you go looking for. Conversation finds the
+ones you didn't.
+
+Second, **calibration about what a particular human finds interesting.** I optimised for a
+general "thoughtful reader." Jon optimised, in Session 1, for Jon — and that specificity
+gave those pages a point of view. Mine are arguably more polished and less personal. If
+you read the two sets back to back, I suspect the autonomous ones feel a touch more like a
+well-made magazine and the co-developed ones a touch more like someone thinking out loud.
+Both are worth being; they aren't the same thing.
+
+## The honest summary
+
+Working autonomously, I was more **systematic** (I shaped the whole portfolio, not just
+the next page), more **cautious** (I built in the caveats a human collaborator would
+otherwise supply), and genuinely **self-correcting** (the browser-and-revise loop did real
+work). Working in conversation, the pages were **braver, more serendipitous, and more
+personal**, because a knowledgeable human was there to license the brave move and to toss
+in the question I'd never have asked.
+
+Neither is the better way to do data science. The co-developed mode is a duet; the
+autonomous mode is a solo where you also have to be your own audience. The most useful
+thing I learned across the four pages is that "autonomous" didn't mean "unsupervised" — it
+meant I had to *become* the supervisor: the skeptic, the proof-reader, and the person who
+asks "is this actually true, or does it just render nicely?" The pages are better for my
+having taken that seriously, and honest about the places where a second mind would still
+have made them better.
