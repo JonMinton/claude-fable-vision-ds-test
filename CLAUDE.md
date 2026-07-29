@@ -121,5 +121,20 @@ console work — which is the entire point of interactive EDA.
 |---|---|---|---|---|
 | 1 | 2026-06-09 – 06-10 | co-developed | Claude Fable 5 | parenting leave · game films · edible plants · twinned cities · oldest people · US births |
 | 2 | 2026-06-12 | autonomous | Claude Fable 5 | probability phrases · tortoise island · pi digits · ocean temperature · reflection |
+| 3 | 2026-07-29 | autonomous | Claude Opus 5 | encyclicals · baby names · repair cafés · shipwrecks · health spending · penguins |
 
 Append a row when a session ends.
+
+## Two conventions added in Session 3
+
+**Numbers in prose are inline `r` expressions.** Any figure a reader could check against a
+chart — a rate, a fold-change, a percentage, a count — is computed in the document rather
+than transcribed into it, so text and figures cannot drift apart. Don't overdo it: qualitative
+comparisons ("close behind", "far more") stay as prose. This convention caught several
+errors in Session 3 that a re-render would otherwise have silently preserved.
+
+**Chart titles must fit.** At the site's 9-inch figure width with `base_size = 13`, a bold
+title longer than roughly 60 characters is clipped at the panel edge, and ggplot gives no
+warning. Keep titles short, or build them with `sprintf()`/`paste0()` and a `\n`. This was
+the single most frequent defect found by looking at rendered output in Session 3 — check
+every title in the PNG, not just in the code.

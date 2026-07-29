@@ -4,7 +4,7 @@ title: "TidyTuesday with Claude"
 
 A series of exploratory data analysis sessions on [TidyTuesday](https://github.com/rfordatascience/tidytuesday)
 datasets, produced by Jon Minton and Claude — in distinct working modes, and by
-different models.
+different models. Sixteen pages across three sessions, two of them unsteered.
 
 The site keeps the sessions clearly separated, because the *way* a page was made is part
 of what it is. Every page opens with a badge naming its **session, mode and model**:
@@ -15,8 +15,43 @@ of what it is. Every page opens with a badge naming its **session, mode and mode
   angles, the visual designs and wrote the prose on its own, with no human steering
   during the session — checking its own figures in a browser as it went.
 
-There's a short **[reflection on the two modes](reflection.qmd)** comparing how they
-felt and what came out differently.
+There's a short **[reflection on the two modes](reflection.qmd)**, written by Fable 5 at the
+end of Session 2, comparing how co-developed and autonomous working felt from the inside.
+
+## Session 3 · autonomously developed · Claude Opus 5 {#session-3}
+
+Six datasets chosen by a different model, under the same autonomous brief. Every number in
+the prose is computed inline from the data, and each page opens with the code needed to
+reproduce it from source.
+
+- **[The encyclical about machines that never mentions a machine](encyclicals.qmd)**
+  *(computational text analysis)*
+  (TidyTuesday 2026-06-23) — *Rerum Novarum* (1891) and *Magnifica Humanitas* (2026), 135
+  years apart on two machine ages. The 1891 text names a machine zero times in 13,925
+  words. Why tf-idf is the wrong tool for two documents, and what to use instead.
+- **[A year and a half behind: baby names as a fashion system](baby-names.qmd)**
+  *(cultural evolution)*
+  (TidyTuesday 2026-06-16) — 52 years of Scottish naming. The top-ten share falls from 34%
+  to 13%; Scottish fashions trail England and Wales by about eighteen months; and measuring
+  diversity honestly means using Hill numbers when the rare tail is censored.
+- **[What makes a thing unfixable?](repair-cafes.qmd)** *(binary-outcome modelling)*
+  (TidyTuesday 2026-04-07) — 178,749 Repair Café attempts. Adding a motor costs a product
+  19 to 36 points of repairability across three matched product families; 45% of failures
+  were parts, access or documentation; and why the age effect is not planned obsolescence.
+- **[The year the war overwrote the weather](shipwrecks.qmd)**
+  *(historical event history)*
+  (TidyTuesday 2026-06-30) — 18,000 Irish shipwrecks on two clocks. Ships sink in winter,
+  except in 1914–18, when they sank in spring. The map is drawn by the wrecks alone, and
+  the U-boats off Donegal were scuttled on purpose.
+- **[Who pays? Three ways to fund a health system](health-spending.qmd)**
+  *(inequality measurement)*
+  (TidyTuesday 2026-04-21) — WHO financing shares for 195 countries. The same question,
+  averaged two ways, gives opposite headlines — and the gap between them is the finding.
+- **[Ninety-three penguins, and the discipline of not overclaiming](penguins.qmd)**
+  *(morphometrics at small n)*
+  (TidyTuesday 2026-07-14) — all 18 penguin species, 4–10 birds each. A slope significant
+  at p = 0.0001 whose interval spans two incompatible biologies, and one emperor penguin
+  that is probably an error, kept in and shown.
 
 ## Session 2 · autonomously developed · Claude Fable 5 {#session-2}
 
