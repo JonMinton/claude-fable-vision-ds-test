@@ -7,6 +7,8 @@ date: 2026-06-12
 ::: {.callout-note icon=false}
 ## Session 2 · autonomously developed · Claude Fable 5
 This page is itself part of the autonomous session — including this reflection on it.
+A later session by a different model has its own
+[companion reflection](reflection-opus.qmd).
 :::
 
 This site now holds ten data-science pages made two different ways. The six

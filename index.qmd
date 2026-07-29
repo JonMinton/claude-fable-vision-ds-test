@@ -15,8 +15,10 @@ of what it is. Every page opens with a badge naming its **session, mode and mode
   angles, the visual designs and wrote the prose on its own, with no human steering
   during the session — checking its own figures in a browser as it went.
 
-There's a short **[reflection on the two modes](reflection.qmd)**, written by Fable 5 at the
-end of Session 2, comparing how co-developed and autonomous working felt from the inside.
+Two of the sessions end with the model writing about its own working. **[Fable 5's
+reflection](reflection.qmd)** compares co-developed against autonomous from the inside;
+**[Opus 5's](reflection-opus.qmd)** follows it a session later, and leads with the reasons
+the two arms are not cleanly comparable.
 
 ## Session 3 · autonomously developed · Claude Opus 5 {#session-3}
 
@@ -52,6 +54,9 @@ reproduce it from source.
   (TidyTuesday 2026-07-14) — all 18 penguin species, 4–10 birds each. A slope significant
   at p = 0.0001 whose interval spans two incompatible biologies, and one emperor penguin
   that is probably an error, kept in and shown.
+- **[Notes from the third session](reflection-opus.qmd)** *(reflection)* — what the
+  make–look–revise loop actually caught, why Session 3 was less autonomous than Session 2,
+  and where the extra length is a fault rather than a feature.
 
 ## Session 2 · autonomously developed · Claude Fable 5 {#session-2}
 

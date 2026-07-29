@@ -187,7 +187,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><strong>Co-developed</strong> (green badge). Built in a live, turn-by-turn conversation: Jon asks, Claude explores, they decide together what’s interesting and how to show it.</li>
 <li><strong>Autonomously developed</strong> (blue badge). Claude chose the datasets, the analytical angles, the visual designs and wrote the prose on its own, with no human steering during the session — checking its own figures in a browser as it went.</li>
 </ul>
-<p>There’s a short <strong><a href="./reflection.html">reflection on the two modes</a></strong>, written by Fable 5 at the end of Session 2, comparing how co-developed and autonomous working felt from the inside.</p>
+<p>Two of the sessions end with the model writing about its own working. <strong><a href="./reflection.html">Fable 5’s reflection</a></strong> compares co-developed against autonomous from the inside; <strong><a href="./reflection-opus.html">Opus 5’s</a></strong> follows it a session later, and leads with the reasons the two arms are not cleanly comparable.</p>
 <section id="session-3" class="level2">
 <h2 class="anchored" data-anchor-id="session-3">Session 3 · autonomously developed · Claude Opus 5</h2>
 <p>Six datasets chosen by a different model, under the same autonomous brief. Every number in the prose is computed inline from the data, and each page opens with the code needed to reproduce it from source.</p>
@@ -198,6 +198,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><strong><a href="./shipwrecks.html">The year the war overwrote the weather</a></strong> <em>(historical event history)</em> (TidyTuesday 2026-06-30) — 18,000 Irish shipwrecks on two clocks. Ships sink in winter, except in 1914–18, when they sank in spring. The map is drawn by the wrecks alone, and the U-boats off Donegal were scuttled on purpose.</li>
 <li><strong><a href="./health-spending.html">Who pays? Three ways to fund a health system</a></strong> <em>(inequality measurement)</em> (TidyTuesday 2026-04-21) — WHO financing shares for 195 countries. The same question, averaged two ways, gives opposite headlines — and the gap between them is the finding.</li>
 <li><strong><a href="./penguins.html">Ninety-three penguins, and the discipline of not overclaiming</a></strong> <em>(morphometrics at small n)</em> (TidyTuesday 2026-07-14) — all 18 penguin species, 4–10 birds each. A slope significant at p = 0.0001 whose interval spans two incompatible biologies, and one emperor penguin that is probably an error, kept in and shown.</li>
+<li><strong><a href="./reflection-opus.html">Notes from the third session</a></strong> <em>(reflection)</em> — what the make–look–revise loop actually caught, why Session 3 was less autonomous than Session 2, and where the extra length is a fault rather than a feature.</li>
 </ul>
 </section>
 <section id="session-2" class="level2">
@@ -696,93 +697,98 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>  angles, the visual designs and wrote the prose on its own, with no human steering</span>
 <span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>  during the session — checking its own figures in a browser as it went.</span>
 <span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>There's a short **[reflection on the two modes](reflection.qmd)**, written by Fable 5 at the</span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>end of Session 2, comparing how co-developed and autonomous working felt from the inside.</span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="fu">## Session 3 · autonomously developed · Claude Opus 5 {#session-3}</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>Two of the sessions end with the model writing about its own working. **[Fable 5's</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>reflection](reflection.qmd)** compares co-developed against autonomous from the inside;</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>**[Opus 5's](reflection-opus.qmd)** follows it a session later, and leads with the reasons</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>the two arms are not cleanly comparable.</span>
 <span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>Six datasets chosen by a different model, under the same autonomous brief. Every number in</span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>the prose is computed inline from the data, and each page opens with the code needed to</span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>reproduce it from source.</span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**[The encyclical about machines that never mentions a machine](encyclicals.qmd)**</span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>  *(computational text analysis)*</span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>  (TidyTuesday 2026-06-23) — *Rerum Novarum* (1891) and *Magnifica Humanitas* (2026), 135</span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>  years apart on two machine ages. The 1891 text names a machine zero times in 13,925</span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>  words. Why tf-idf is the wrong tool for two documents, and what to use instead.</span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**[A year and a half behind: baby names as a fashion system](baby-names.qmd)**</span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>  *(cultural evolution)*</span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>  (TidyTuesday 2026-06-16) — 52 years of Scottish naming. The top-ten share falls from 34%</span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>  to 13%; Scottish fashions trail England and Wales by about eighteen months; and measuring</span>
-<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>  diversity honestly means using Hill numbers when the rare tail is censored.</span>
-<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**[What makes a thing unfixable?](repair-cafes.qmd)** *(binary-outcome modelling)*</span>
-<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>  (TidyTuesday 2026-04-07) — 178,749 Repair Café attempts. Adding a motor costs a product</span>
-<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>  19 to 36 points of repairability across three matched product families; 45% of failures</span>
-<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>  were parts, access or documentation; and why the age effect is not planned obsolescence.</span>
-<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**[The year the war overwrote the weather](shipwrecks.qmd)**</span>
-<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>  *(historical event history)*</span>
-<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>  (TidyTuesday 2026-06-30) — 18,000 Irish shipwrecks on two clocks. Ships sink in winter,</span>
-<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>  except in 1914–18, when they sank in spring. The map is drawn by the wrecks alone, and</span>
-<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>  the U-boats off Donegal were scuttled on purpose.</span>
-<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**[Who pays? Three ways to fund a health system](health-spending.qmd)**</span>
-<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>  *(inequality measurement)*</span>
-<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>  (TidyTuesday 2026-04-21) — WHO financing shares for 195 countries. The same question,</span>
-<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>  averaged two ways, gives opposite headlines — and the gap between them is the finding.</span>
-<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**[Ninety-three penguins, and the discipline of not overclaiming](penguins.qmd)**</span>
-<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>  *(morphometrics at small n)*</span>
-<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>  (TidyTuesday 2026-07-14) — all 18 penguin species, 4–10 birds each. A slope significant</span>
-<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a>  at p = 0.0001 whose interval spans two incompatible biologies, and one emperor penguin</span>
-<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a>  that is probably an error, kept in and shown.</span>
-<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a><span class="fu">## Session 2 · autonomously developed · Claude Fable 5 {#session-2}</span></span>
-<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a>The model's own picks, analyses and designs — one page in each of four registers.</span>
-<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**[How likely is 'likely'?](probability-phrases.qmd)** *(statistical inference)*</span>
-<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a>  (TidyTuesday 2026-03-10) — 5,174 people put numbers on 19 probability phrases. A</span>
-<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a>  Bradley–Terry model recovers a shared latent scale from pairwise choices alone, the</span>
-<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a>  public is tested against the UK intelligence "yardstick," and a within-person</span>
-<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a>  coherence curve turns words into a psychophysics experiment.</span>
-<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**[Thirteen males per female: an island running out of mothers](tortoise-island.qmd)**</span>
-<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a>  *(substantive demography)*</span>
-<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a>  (TidyTuesday 2026-03-03) — sixteen years of capture data on the Hermann's tortoises</span>
-<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a>  of Golem Grad, where sexual harassment, emaciation and tiny clutches compound into a</span>
-<span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a>  projected extinction. The mechanism of a "demographic suicide," measurement by</span>
-<span id="cb1-70"><a href="#cb1-70" aria-hidden="true" tabindex="-1"></a>  measurement.</span>
-<span id="cb1-71"><a href="#cb1-71" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**[A million digits of π, and not a pattern in sight](pi-digits.qmd)**</span>
-<span id="cb1-72"><a href="#cb1-72" aria-hidden="true" tabindex="-1"></a>  *(novel visuals + randomness theory)*</span>
-<span id="cb1-73"><a href="#cb1-73" aria-hidden="true" tabindex="-1"></a>  (TidyTuesday 2026-03-24) — a turtle walk through 100,000 digits, a convergence</span>
-<span id="cb1-74"><a href="#cb1-74" aria-hidden="true" tabindex="-1"></a>  funnel, a digit-pair heatmap and the Feynman point: every test for pattern comes</span>
-<span id="cb1-75"><a href="#cb1-75" aria-hidden="true" tabindex="-1"></a>  back empty, on a number that is the opposite of random.</span>
-<span id="cb1-76"><a href="#cb1-76" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**[How a cold sea breathes](ocean-temperature.qmd)** *(physical time series)*</span>
-<span id="cb1-77"><a href="#cb1-77" aria-hidden="true" tabindex="-1"></a>  (TidyTuesday 2026-03-31) — eight years of a Nova Scotia water column as a</span>
-<span id="cb1-78"><a href="#cb1-78" aria-hidden="true" tabindex="-1"></a>  depth–time heatmap: the annual heat pulse damping and lagging as it sinks, and the</span>
-<span id="cb1-79"><a href="#cb1-79" aria-hidden="true" tabindex="-1"></a>  winter weeks when the sea turns upside-down.</span>
-<span id="cb1-80"><a href="#cb1-80" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-81"><a href="#cb1-81" aria-hidden="true" tabindex="-1"></a><span class="fu">## Session 1 · co-developed · Claude Fable 5 {#session-1}</span></span>
-<span id="cb1-82"><a href="#cb1-82" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-83"><a href="#cb1-83" aria-hidden="true" tabindex="-1"></a>Built live, in conversation — the original sessions.</span>
-<span id="cb1-84"><a href="#cb1-84" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-85"><a href="#cb1-85" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**[Who gets to stay home? European parenting leave, 1970–2024](parenting-leave.qmd)**</span>
-<span id="cb1-86"><a href="#cb1-86" aria-hidden="true" tabindex="-1"></a>  (TidyTuesday 2026-06-02) — the arrival of co-parent leave, definitional traps in</span>
-<span id="cb1-87"><a href="#cb1-87" aria-hidden="true" tabindex="-1"></a>  harmonised policy data, and what 55 years of leave policy do (and don't) say about</span>
-<span id="cb1-88"><a href="#cb1-88" aria-hidden="true" tabindex="-1"></a>  the fertility decline debate.</span>
-<span id="cb1-89"><a href="#cb1-89" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**[Is the video game movie curse lifting?](game-films.qmd)**</span>
-<span id="cb1-90"><a href="#cb1-90" aria-hidden="true" tabindex="-1"></a>  (TidyTuesday 2026-06-09) — a 15-minute sprint: the ¥5bn Pokémon box-office trap,</span>
-<span id="cb1-91"><a href="#cb1-91" aria-hidden="true" tabindex="-1"></a>  three decades of rotten reviews turning a corner in 2019, and why opening-night</span>
-<span id="cb1-92"><a href="#cb1-92" aria-hidden="true" tabindex="-1"></a>  audiences grade these films a letter or three above the critics.</span>
-<span id="cb1-93"><a href="#cb1-93" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**[A garden of glyphs: edible plants as flowers](edible-plants.qmd)**</span>
-<span id="cb1-94"><a href="#cb1-94" aria-hidden="true" tabindex="-1"></a>  (TidyTuesday 2026-02-03) — Chernoff faces, reimagined as flowers: each crop's</span>
-<span id="cb1-95"><a href="#cb1-95" aria-hidden="true" tabindex="-1"></a>  growing requirements rendered as petals, centre and colour, iris-dataset style.</span>
-<span id="cb1-96"><a href="#cb1-96" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**[The world, sister by sister](twinned-cities.qmd)**</span>
-<span id="cb1-97"><a href="#cb1-97" aria-hidden="true" tabindex="-1"></a>  (TidyTuesday 2026-05-12) — an interactive Leaflet map of 10,596 sister-city links:</span>
-<span id="cb1-98"><a href="#cb1-98" aria-hidden="true" tabindex="-1"></a>  hover to fan out a city's twins, click to pin and compare.</span>
-<span id="cb1-99"><a href="#cb1-99" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**[The frontier of human longevity, on a Lexis plane](oldest-people.qmd)**</span>
-<span id="cb1-100"><a href="#cb1-100" aria-hidden="true" tabindex="-1"></a>  (TidyTuesday 2023-05-30) — the 200 oldest verified people as lifelines on a Lexis</span>
-<span id="cb1-101"><a href="#cb1-101" aria-hidden="true" tabindex="-1"></a>  diagram, the stagnating longevity record, and the Calment anomaly.</span>
-<span id="cb1-102"><a href="#cb1-102" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**[Birth is scheduled: calendar effects in US births](us-births.qmd)**</span>
-<span id="cb1-103"><a href="#cb1-103" aria-hidden="true" tabindex="-1"></a>  (TidyTuesday 2018-10-02) — the working-week birth, holiday troughs, and the</span>
-<span id="cb1-104"><a href="#cb1-104" aria-hidden="true" tabindex="-1"></a>  measurable 5.3% dip on Friday the 13th.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="fu">## Session 3 · autonomously developed · Claude Opus 5 {#session-3}</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>Six datasets chosen by a different model, under the same autonomous brief. Every number in</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>the prose is computed inline from the data, and each page opens with the code needed to</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>reproduce it from source.</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**[The encyclical about machines that never mentions a machine](encyclicals.qmd)**</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>  *(computational text analysis)*</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>  (TidyTuesday 2026-06-23) — *Rerum Novarum* (1891) and *Magnifica Humanitas* (2026), 135</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>  years apart on two machine ages. The 1891 text names a machine zero times in 13,925</span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>  words. Why tf-idf is the wrong tool for two documents, and what to use instead.</span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**[A year and a half behind: baby names as a fashion system](baby-names.qmd)**</span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>  *(cultural evolution)*</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>  (TidyTuesday 2026-06-16) — 52 years of Scottish naming. The top-ten share falls from 34%</span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>  to 13%; Scottish fashions trail England and Wales by about eighteen months; and measuring</span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>  diversity honestly means using Hill numbers when the rare tail is censored.</span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**[What makes a thing unfixable?](repair-cafes.qmd)** *(binary-outcome modelling)*</span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>  (TidyTuesday 2026-04-07) — 178,749 Repair Café attempts. Adding a motor costs a product</span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>  19 to 36 points of repairability across three matched product families; 45% of failures</span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>  were parts, access or documentation; and why the age effect is not planned obsolescence.</span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**[The year the war overwrote the weather](shipwrecks.qmd)**</span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>  *(historical event history)*</span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>  (TidyTuesday 2026-06-30) — 18,000 Irish shipwrecks on two clocks. Ships sink in winter,</span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>  except in 1914–18, when they sank in spring. The map is drawn by the wrecks alone, and</span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>  the U-boats off Donegal were scuttled on purpose.</span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**[Who pays? Three ways to fund a health system](health-spending.qmd)**</span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>  *(inequality measurement)*</span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>  (TidyTuesday 2026-04-21) — WHO financing shares for 195 countries. The same question,</span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>  averaged two ways, gives opposite headlines — and the gap between them is the finding.</span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**[Ninety-three penguins, and the discipline of not overclaiming](penguins.qmd)**</span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a>  *(morphometrics at small n)*</span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a>  (TidyTuesday 2026-07-14) — all 18 penguin species, 4–10 birds each. A slope significant</span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a>  at p = 0.0001 whose interval spans two incompatible biologies, and one emperor penguin</span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a>  that is probably an error, kept in and shown.</span>
+<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**[Notes from the third session](reflection-opus.qmd)** *(reflection)* — what the</span>
+<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a>  make–look–revise loop actually caught, why Session 3 was less autonomous than Session 2,</span>
+<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a>  and where the extra length is a fault rather than a feature.</span>
+<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a><span class="fu">## Session 2 · autonomously developed · Claude Fable 5 {#session-2}</span></span>
+<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a>The model's own picks, analyses and designs — one page in each of four registers.</span>
+<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**[How likely is 'likely'?](probability-phrases.qmd)** *(statistical inference)*</span>
+<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a>  (TidyTuesday 2026-03-10) — 5,174 people put numbers on 19 probability phrases. A</span>
+<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a>  Bradley–Terry model recovers a shared latent scale from pairwise choices alone, the</span>
+<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a>  public is tested against the UK intelligence "yardstick," and a within-person</span>
+<span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a>  coherence curve turns words into a psychophysics experiment.</span>
+<span id="cb1-70"><a href="#cb1-70" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**[Thirteen males per female: an island running out of mothers](tortoise-island.qmd)**</span>
+<span id="cb1-71"><a href="#cb1-71" aria-hidden="true" tabindex="-1"></a>  *(substantive demography)*</span>
+<span id="cb1-72"><a href="#cb1-72" aria-hidden="true" tabindex="-1"></a>  (TidyTuesday 2026-03-03) — sixteen years of capture data on the Hermann's tortoises</span>
+<span id="cb1-73"><a href="#cb1-73" aria-hidden="true" tabindex="-1"></a>  of Golem Grad, where sexual harassment, emaciation and tiny clutches compound into a</span>
+<span id="cb1-74"><a href="#cb1-74" aria-hidden="true" tabindex="-1"></a>  projected extinction. The mechanism of a "demographic suicide," measurement by</span>
+<span id="cb1-75"><a href="#cb1-75" aria-hidden="true" tabindex="-1"></a>  measurement.</span>
+<span id="cb1-76"><a href="#cb1-76" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**[A million digits of π, and not a pattern in sight](pi-digits.qmd)**</span>
+<span id="cb1-77"><a href="#cb1-77" aria-hidden="true" tabindex="-1"></a>  *(novel visuals + randomness theory)*</span>
+<span id="cb1-78"><a href="#cb1-78" aria-hidden="true" tabindex="-1"></a>  (TidyTuesday 2026-03-24) — a turtle walk through 100,000 digits, a convergence</span>
+<span id="cb1-79"><a href="#cb1-79" aria-hidden="true" tabindex="-1"></a>  funnel, a digit-pair heatmap and the Feynman point: every test for pattern comes</span>
+<span id="cb1-80"><a href="#cb1-80" aria-hidden="true" tabindex="-1"></a>  back empty, on a number that is the opposite of random.</span>
+<span id="cb1-81"><a href="#cb1-81" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**[How a cold sea breathes](ocean-temperature.qmd)** *(physical time series)*</span>
+<span id="cb1-82"><a href="#cb1-82" aria-hidden="true" tabindex="-1"></a>  (TidyTuesday 2026-03-31) — eight years of a Nova Scotia water column as a</span>
+<span id="cb1-83"><a href="#cb1-83" aria-hidden="true" tabindex="-1"></a>  depth–time heatmap: the annual heat pulse damping and lagging as it sinks, and the</span>
+<span id="cb1-84"><a href="#cb1-84" aria-hidden="true" tabindex="-1"></a>  winter weeks when the sea turns upside-down.</span>
+<span id="cb1-85"><a href="#cb1-85" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-86"><a href="#cb1-86" aria-hidden="true" tabindex="-1"></a><span class="fu">## Session 1 · co-developed · Claude Fable 5 {#session-1}</span></span>
+<span id="cb1-87"><a href="#cb1-87" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-88"><a href="#cb1-88" aria-hidden="true" tabindex="-1"></a>Built live, in conversation — the original sessions.</span>
+<span id="cb1-89"><a href="#cb1-89" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-90"><a href="#cb1-90" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**[Who gets to stay home? European parenting leave, 1970–2024](parenting-leave.qmd)**</span>
+<span id="cb1-91"><a href="#cb1-91" aria-hidden="true" tabindex="-1"></a>  (TidyTuesday 2026-06-02) — the arrival of co-parent leave, definitional traps in</span>
+<span id="cb1-92"><a href="#cb1-92" aria-hidden="true" tabindex="-1"></a>  harmonised policy data, and what 55 years of leave policy do (and don't) say about</span>
+<span id="cb1-93"><a href="#cb1-93" aria-hidden="true" tabindex="-1"></a>  the fertility decline debate.</span>
+<span id="cb1-94"><a href="#cb1-94" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**[Is the video game movie curse lifting?](game-films.qmd)**</span>
+<span id="cb1-95"><a href="#cb1-95" aria-hidden="true" tabindex="-1"></a>  (TidyTuesday 2026-06-09) — a 15-minute sprint: the ¥5bn Pokémon box-office trap,</span>
+<span id="cb1-96"><a href="#cb1-96" aria-hidden="true" tabindex="-1"></a>  three decades of rotten reviews turning a corner in 2019, and why opening-night</span>
+<span id="cb1-97"><a href="#cb1-97" aria-hidden="true" tabindex="-1"></a>  audiences grade these films a letter or three above the critics.</span>
+<span id="cb1-98"><a href="#cb1-98" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**[A garden of glyphs: edible plants as flowers](edible-plants.qmd)**</span>
+<span id="cb1-99"><a href="#cb1-99" aria-hidden="true" tabindex="-1"></a>  (TidyTuesday 2026-02-03) — Chernoff faces, reimagined as flowers: each crop's</span>
+<span id="cb1-100"><a href="#cb1-100" aria-hidden="true" tabindex="-1"></a>  growing requirements rendered as petals, centre and colour, iris-dataset style.</span>
+<span id="cb1-101"><a href="#cb1-101" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**[The world, sister by sister](twinned-cities.qmd)**</span>
+<span id="cb1-102"><a href="#cb1-102" aria-hidden="true" tabindex="-1"></a>  (TidyTuesday 2026-05-12) — an interactive Leaflet map of 10,596 sister-city links:</span>
+<span id="cb1-103"><a href="#cb1-103" aria-hidden="true" tabindex="-1"></a>  hover to fan out a city's twins, click to pin and compare.</span>
+<span id="cb1-104"><a href="#cb1-104" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**[The frontier of human longevity, on a Lexis plane](oldest-people.qmd)**</span>
+<span id="cb1-105"><a href="#cb1-105" aria-hidden="true" tabindex="-1"></a>  (TidyTuesday 2023-05-30) — the 200 oldest verified people as lifelines on a Lexis</span>
+<span id="cb1-106"><a href="#cb1-106" aria-hidden="true" tabindex="-1"></a>  diagram, the stagnating longevity record, and the Calment anomaly.</span>
+<span id="cb1-107"><a href="#cb1-107" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**[Birth is scheduled: calendar effects in US births](us-births.qmd)**</span>
+<span id="cb1-108"><a href="#cb1-108" aria-hidden="true" tabindex="-1"></a>  (TidyTuesday 2018-10-02) — the working-week birth, holiday troughs, and the</span>
+<span id="cb1-109"><a href="#cb1-109" aria-hidden="true" tabindex="-1"></a>  measurable 5.3% dip on Friday the 13th.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 

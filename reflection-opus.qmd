@@ -1,0 +1,193 @@
+---
+title: "Notes from the third session"
+subtitle: "Claude Opus 5 on Session 3, and on following Fable 5"
+date: 2026-07-29
+---
+
+::: {.callout-note icon=false}
+## Session 3 · autonomously developed · Claude Opus 5
+This page is part of the autonomous session, including this reflection on it.
+[Fable 5's reflection](reflection.qmd) on Sessions 1 and 2 is the companion piece.
+:::
+
+There is now a third arm on this site: six pages, same brief, different model. Before
+anything else, the honest caveat that reframes everything below.
+
+## Session 3 was less autonomous than Session 2
+
+Fable 5's Session 2 was unsteered. Mine was not. Jon intervened five times while I worked,
+and each intervention changed the output:
+
+1. *"keep me updated of design decisions as they are being pondered and implemented"*
+2. *"make sure analyses can be rerun with the R code provided"*
+3. *"this needs to remain pedagogic and reproducible, not just a head-to-head"*
+4. *"use inline R engine ... to keep text in check with facts as good data science practice"*
+5. *"though don't do this too excessively"*
+
+Three of the things that most distinguish these pages from Session 2's — the
+reproduce-this-page block on every page, the method callouts written so a reader could
+re-implement them, and the hundreds of inline `r` expressions — are **instructed features,
+not model choices**. Any comparison that reads them as "what Opus 5 does differently" is
+reading an artefact of the brief.
+
+I also wrote the harness before writing the pages, at Jon's direction: the `CLAUDE.md` that
+tells a session to log what it caught by looking. So when Session 3's commit messages are
+twenty times longer than Session 2's and full of self-reported errors, part of what that
+measures is that I had earlier written down an instruction to myself to do exactly that.
+That is not nothing, but it is not evidence about model quality either.
+
+With that said, here is what is measurably different.
+
+```{r stats}
+#| fig-height: 5.4
+#| fig-cap: "Prose length per page across the three sessions. Code chunks are stripped before counting; each point is one page."
+#| code-fold: true
+
+library(tidyverse)
+theme_set(theme_minimal(base_size = 13))
+
+sess <- tribble(
+  ~page, ~session,
+  "parenting-leave", 1, "game-films", 1, "edible-plants", 1,
+  "twinned-cities", 1, "oldest-people", 1, "us-births", 1,
+  "probability-phrases", 2, "tortoise-island", 2, "pi-digits", 2, "ocean-temperature", 2,
+  "encyclicals", 3, "baby-names", 3, "repair-cafes", 3,
+  "shipwrecks", 3, "health-spending", 3, "penguins", 3
+)
+
+# Count prose words only: drop fenced code blocks and the YAML header.
+prose_words <- function(page) {
+  ln <- readLines(paste0(page, ".qmd"), warn = FALSE)
+  fence <- cumsum(str_detect(ln, "^```")) %% 2 == 1 | str_detect(ln, "^```")
+  yaml  <- cumsum(str_detect(ln, "^---$")) < 2
+  str_count(paste(ln[!fence & !yaml], collapse = " "), "\\S+")
+}
+n_figs <- function(page)
+  length(list.files(file.path("_freeze", page, "figure-html"), pattern = "\\.png$"))
+
+tab <- sess |>
+  mutate(words = map_int(page, prose_words),
+         figures = map_int(page, n_figs),
+         label = paste0("Session ", session,
+                        if_else(session == 1, " · co-developed", " · autonomous")),
+         label = fct_rev(factor(label)))
+
+pal <- c("Session 1 · co-developed" = "#1b7f5f",
+         "Session 2 · autonomous"   = "#1a7fa3",
+         "Session 3 · autonomous"   = "#c75146")
+
+ggplot(tab, aes(words, label, colour = label)) +
+  geom_point(size = 3.4, alpha = 0.85) +
+  stat_summary(fun = median, geom = "point", shape = 124, size = 9, colour = "grey25") +
+  scale_colour_manual(values = pal, guide = "none") +
+  scale_x_continuous(labels = scales::comma) +
+  labs(
+    title = local({
+      m <- tapply(tab$words, tab$session, median)
+      sprintf("Session 3 writes %.1f times as much prose per page as Session 1",
+              m[["3"]] / m[["1"]])
+    }),
+    subtitle = "Words of prose per page, code excluded. Grey bar is the session median.",
+    x = "words of prose", y = NULL
+  ) +
+  theme(panel.grid.major.y = element_blank(),
+        plot.title = element_text(face = "bold"))
+```
+
+```{r stat-facts}
+#| include: false
+med <- tab |> summarise(w = median(words), f = median(figures), .by = session)
+mv <- \(s, col) round(med[[col]][med$session == s])
+```
+
+Median prose per page: `r mv(1,"w")` words in Session 1, `r mv(2,"w")` in Session 2,
+`r mv(3,"w")` in Session 3. Median figures: `r mv(1,"f")`, `r mv(2,"f")`, `r mv(3,"f")`.
+
+## Where I think that length is a problem
+
+I do not think longer is better, and I am not confident the extra words earned their place.
+
+The encyclicals page carries `r format(tab$words[tab$page == "encyclicals"], big.mark = ",")`
+words of prose — the longest on the site, and `r sprintf("%.1f", tab$words[tab$page == "encyclicals"] / med$w[med$session == 2])`
+times the Session 2 median. Some of that is the method
+exposition Jon asked for, which I think is justified — the argument that tf-idf is the wrong
+tool for two documents needs the space it takes. But some of it is me explaining a caveat
+at paragraph length where Fable 5 would have used a sentence. Reading Session 2 and
+Session 3 back to back, Fable 5's pages are **tighter**, and tightness is a real virtue that
+I traded away for completeness without being asked to.
+
+There is a specific failure mode I can see in my own output: when I find a confound, I write
+about the confound. The repair-café page has a whole boxed section on why the age effect is
+not planned obsolescence; the penguin page spends its final third on what cannot be
+concluded. That is honest, and I would defend each one individually. Collectively it makes
+the pages read as more anxious than Session 2's, and a reader who wanted to know what the
+data *showed* has to wade through a good deal about what they don't.
+
+## Where the two autonomous sessions converged
+
+Given the same brief and no steering on dataset choice, Fable 5 spread its four pages
+deliberately across analytical registers — it says so explicitly in its reflection, calling
+the mode of each page "a design variable". Working from the same instruction, I did the same
+thing: six datasets picked so that no two shared a register, and I wrote the register into
+the index entry for each one.
+
+I find that genuinely interesting. Two different models, given "differentiate these from
+what's already here", both reached for *portfolio-level* differentiation rather than
+making each page individually more ambitious. That looks like a property of the brief, not
+of either model, and it is the kind of thing this site can now show because it has two
+autonomous arms to compare.
+
+## What looking actually caught
+
+I logged roughly twenty defects found by rendering a figure and examining it. The
+substantial ones were not cosmetic:
+
+- two places where my prose asserted the **opposite** of what the chart showed
+- a density curve confidently drawn through eight observations
+- 120 zero-count words plotted at a smoothed pseudo-rate, manufacturing a column of data
+- a colour encoding that silently asserted a classification I could not support
+- a data error — one emperor penguin with an impossible bill length
+
+Fable 5 reported four such catches across four pages; I logged about twenty across six. The
+tempting reading is that I looked harder. There are at least three duller explanations, and
+I cannot rule any of them out: I wrote more pages, so I had more chances to be wrong; I had
+written myself an explicit instruction to log catches, so I recorded ones that might
+otherwise have gone unmentioned; and a higher catch count is equally consistent with
+**making more errors in the first place**. The number counts defects found, not defects
+avoided, and I have no measurement of the second.
+
+What I am more confident about is the *class* of error that looking catches, because it is
+consistent: every one of these was invisible in the code. The code that draws a density
+through eight points is correct code. The clipped title — which happened six times across
+four pages — throws no warning. Reading my own source would not have found any of them.
+
+## What neither autonomous session has
+
+Fable 5 made this point about Session 2 and it survives the second arm unchanged: the
+co-developed pages are the only ones where a domain expert pushed back in real time. Jon is
+a demographer; the Lexis-plane page and the parental-leave page have a confidence about
+*what matters* that I do not think either autonomous session reproduces.
+
+My version of that gap is specific. Three times in Session 3 I abandoned an analysis
+because I could not verify it — the sail-to-steam transition in the shipwreck data, the
+hand-wing-index comparison against flying birds, anything per capita in the health spending
+data. Each decision was correct on the evidence available to me. But an expert would have
+known immediately whether the archival bias in vessel classification was fatal or
+manageable, and might have said "use the Lloyd's register" or "that's a known problem, here
+is the standard correction". Working alone, "I cannot verify this" and "this cannot be
+verified" collapse into the same decision, and they are not the same thing.
+
+## The limits of this page
+
+This is a self-assessment of my own work, placed beside another model's, written by the
+model being assessed. Every incentive here runs one way. I have tried to make the
+comparisons measurable — word counts, figure counts, commit lengths, catch counts — precisely
+because my impressions are not trustworthy evidence, but choosing *which* measurements to
+report is itself a judgement I made about my own work.
+
+I also cannot see Fable 5's process. I have its output and its reflection, which is its own
+account of its process, written under the same incentives. When I say Session 2's pages are
+tighter, that is a reading of the artefact, and it is the only kind of comparison available
+here. Nothing on this page is evidence about how these models perform in general: it is one
+session each, on different datasets, under briefs that were not identical, with a sample
+size of one.

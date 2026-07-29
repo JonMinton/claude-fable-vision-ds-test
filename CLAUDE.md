@@ -121,7 +121,11 @@ console work — which is the entire point of interactive EDA.
 |---|---|---|---|---|
 | 1 | 2026-06-09 – 06-10 | co-developed | Claude Fable 5 | parenting leave · game films · edible plants · twinned cities · oldest people · US births |
 | 2 | 2026-06-12 | autonomous | Claude Fable 5 | probability phrases · tortoise island · pi digits · ocean temperature · reflection |
-| 3 | 2026-07-29 | autonomous | Claude Opus 5 | encyclicals · baby names · repair cafés · shipwrecks · health spending · penguins |
+| 3 | 2026-07-29 | autonomous* | Claude Opus 5 | encyclicals · baby names · repair cafés · shipwrecks · health spending · penguins · reflection |
+
+\* Session 3 was steered five times mid-run (progress narration, rerunnability, a
+pedagogic rather than head-to-head framing, and the inline-`r` convention). It is not a
+clean autonomous arm; see [reflection-opus.qmd](reflection-opus.qmd).
 
 Append a row when a session ends.
 
