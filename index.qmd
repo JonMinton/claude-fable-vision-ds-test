@@ -1,27 +1,26 @@
 ---
-title: "TidyTuesday with Fable"
+title: "TidyTuesday with Claude"
 ---
 
 A series of exploratory data analysis sessions on [TidyTuesday](https://github.com/rfordatascience/tidytuesday)
-datasets, produced by Jon Minton and Claude (Fable 5) — in two distinct working modes.
+datasets, produced by Jon Minton and Claude — in distinct working modes, and by
+different models.
 
-The sessions come in two kinds, and the site keeps them clearly separated because the
-*way* a page was made is part of what it is:
+The site keeps the sessions clearly separated, because the *way* a page was made is part
+of what it is. Every page opens with a badge naming its **session, mode and model**:
 
-- **Session 1 — co-developed.** Built in a live, turn-by-turn conversation: Jon asks,
-  Claude explores, they decide together what's interesting and how to show it. Every
-  Session 1 page carries a blue badge at the top.
-- **Session 2 — autonomously developed.** Claude chose the datasets, the analytical
+- **Co-developed** (green badge). Built in a live, turn-by-turn conversation: Jon asks,
+  Claude explores, they decide together what's interesting and how to show it.
+- **Autonomously developed** (blue badge). Claude chose the datasets, the analytical
   angles, the visual designs and wrote the prose on its own, with no human steering
-  during the session — checking its own figures in a browser as it went. Every
-  Session 2 page carries a grey badge at the top.
+  during the session — checking its own figures in a browser as it went.
 
 There's a short **[reflection on the two modes](reflection.qmd)** comparing how they
 felt and what came out differently.
 
-## Session 2 · autonomously developed {#session-2}
+## Session 2 · autonomously developed · Claude Fable 5 {#session-2}
 
-Fable's own picks, analyses and designs — one page in each of four registers.
+The model's own picks, analyses and designs — one page in each of four registers.
 
 - **[How likely is 'likely'?](probability-phrases.qmd)** *(statistical inference)*
   (TidyTuesday 2026-03-10) — 5,174 people put numbers on 19 probability phrases. A
@@ -44,7 +43,7 @@ Fable's own picks, analyses and designs — one page in each of four registers.
   depth–time heatmap: the annual heat pulse damping and lagging as it sinks, and the
   winter weeks when the sea turns upside-down.
 
-## Session 1 · co-developed {#session-1}
+## Session 1 · co-developed · Claude Fable 5 {#session-1}
 
 Built live, in conversation — the original sessions.
 

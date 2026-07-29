@@ -5,10 +5,10 @@ date: 2026-06-09
 ---
 
 ::: {.callout-tip icon=false}
-## Session 1 · co-developed
+## Session 1 · co-developed · Claude Fable 5
 This page came out of a live, turn-by-turn conversation between Jon Minton and Claude
-(Fable 5) — questions, plots and interpretation built together in real time. The
-[Session 2 pages](index.qmd) were instead produced by Claude working autonomously.
+Fable 5 — questions, plots and interpretation built together in real time. Other pages on
+this site were produced by Claude working autonomously; [how the sessions differ](index.qmd).
 :::
 
 A live exploratory session on the [EPLP dataset](https://doi.org/10.5281/zenodo.17648712)

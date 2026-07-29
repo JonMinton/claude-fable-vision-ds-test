@@ -8,7 +8,7 @@
 
 <meta name="dcterms.date" content="2026-06-12">
 
-<title>Thirteen males per female: an island running out of mothers – TidyTuesday with Fable</title>
+<title>Thirteen males per female: an island running out of mothers – TidyTuesday with Claude</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -118,7 +118,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="./index.html">
-    <span class="navbar-title">TidyTuesday with Fable</span>
+    <span class="navbar-title">TidyTuesday with Claude</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -197,11 +197,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Session 2 · autonomously developed
+<span class="screen-reader-only">Note</span>Session 2 · autonomously developed · Claude Fable 5
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Dataset choice, analytical angle, figures and prose are Claude’s (Fable 5), produced working autonomously. <a href="./index.html">Session 1 pages</a> were co-developed in live conversation.</p>
+<p>Dataset choice, analytical angle, figures and prose are Claude Fable 5’s, produced working autonomously with no human steering during the session. <a href="./index.html">How the sessions differ</a>.</p>
 </div>
 </div>
 <p>Golem Grad is a small island in Lake Prespa, on the borders of North Macedonia, Albania and Greece. It carries one of the densest known populations of Hermann’s tortoise — and that density has become a trap. A <a href="https://onlinelibrary.wiley.com/doi/10.1111/ele.70296">2026 paper in <em>Ecology Letters</em></a> reports that sexually coercive males so badly outnumber and harass females that the island population is in a slow, self-inflicted collapse: an “ongoing extinction event” whose models predict the <strong>last island female will die in 2083</strong>.</p>
@@ -905,262 +905,263 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
 <span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>::: {.callout-note icon=false}</span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="fu">## Session 2 · autonomously developed</span></span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>Dataset choice, analytical angle, figures and prose are Claude's (Fable 5), produced</span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>working autonomously. <span class="co">[</span><span class="ot">Session 1 pages</span><span class="co">](index.qmd)</span> were co-developed in live conversation.</span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>Golem Grad is a small island in Lake Prespa, on the borders of North Macedonia,</span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>Albania and Greece. It carries one of the densest known populations of Hermann's</span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>tortoise — and that density has become a trap. A [2026 paper in *Ecology</span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>Letters*](https://onlinelibrary.wiley.com/doi/10.1111/ele.70296) reports that</span>
-<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>sexually coercive males so badly outnumber and harass females that the island</span>
-<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>population is in a slow, self-inflicted collapse: an "ongoing extinction event"</span>
-<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>whose models predict the **last island female will die in 2083**.</span>
-<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>Sixteen years of capture–recapture data (2008–2023) sit behind that sentence. This</span>
-<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>page is an attempt to *see* the mechanism — not to model the extinction, but to lay</span>
-<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>out, measurement by measurement, why a crowded island becomes a demographic</span>
-<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>dead end. Three sites anchor the comparison: two on the island itself (the cliff-edged</span>
-<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>**Plateau** and the **Beach** below it) and a mainland reference population at</span>
-<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>**Konjsko**.</span>
-<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a><span class="in">```{r setup}</span></span>
-<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a>bc <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/tortoise_body_condition_cleaned.csv"</span>, <span class="at">show_col_types =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a>cl <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/clutch_size_cleaned.csv"</span>, <span class="at">show_col_types =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a><span class="co"># Site → habitat, ordered island-first</span></span>
-<span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a>site_levels <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Plateau"</span>, <span class="st">"Beach"</span>, <span class="st">"Konjsko"</span>)</span>
-<span id="cb6-36"><a href="#cb6-36" aria-hidden="true" tabindex="-1"></a>hab <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="at">Plateau =</span> <span class="st">"Golem Grad island"</span>, <span class="at">Beach =</span> <span class="st">"Golem Grad island"</span>,</span>
-<span id="cb6-37"><a href="#cb6-37" aria-hidden="true" tabindex="-1"></a>         <span class="at">Konjsko =</span> <span class="st">"Mainland"</span>)</span>
-<span id="cb6-38"><a href="#cb6-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-39"><a href="#cb6-39" aria-hidden="true" tabindex="-1"></a>bc <span class="ot">&lt;-</span> bc <span class="sc">|&gt;</span></span>
-<span id="cb6-40"><a href="#cb6-40" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb6-41"><a href="#cb6-41" aria-hidden="true" tabindex="-1"></a>    <span class="at">locality =</span> <span class="fu">factor</span>(locality, <span class="at">levels =</span> site_levels),</span>
-<span id="cb6-42"><a href="#cb6-42" aria-hidden="true" tabindex="-1"></a>    <span class="at">habitat =</span> hab[<span class="fu">as.character</span>(locality)],</span>
-<span id="cb6-43"><a href="#cb6-43" aria-hidden="true" tabindex="-1"></a>    <span class="at">Sex =</span> <span class="fu">recode</span>(sex, <span class="at">f =</span> <span class="st">"Female"</span>, <span class="at">m =</span> <span class="st">"Male"</span>)</span>
-<span id="cb6-44"><a href="#cb6-44" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb6-45"><a href="#cb6-45" aria-hidden="true" tabindex="-1"></a>cl <span class="ot">&lt;-</span> cl <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">locality =</span> <span class="fu">factor</span>(locality, <span class="at">levels =</span> site_levels))</span>
-<span id="cb6-46"><a href="#cb6-46" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-47"><a href="#cb6-47" aria-hidden="true" tabindex="-1"></a>island_col <span class="ot">&lt;-</span> <span class="st">"#b5651d"</span>   <span class="co"># warm terracotta = island</span></span>
-<span id="cb6-48"><a href="#cb6-48" aria-hidden="true" tabindex="-1"></a>main_col   <span class="ot">&lt;-</span> <span class="st">"#2f6b53"</span>   <span class="co"># green = mainland</span></span>
-<span id="cb6-49"><a href="#cb6-49" aria-hidden="true" tabindex="-1"></a>sex_pal    <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="at">Female =</span> <span class="st">"#c2456b"</span>, <span class="at">Male =</span> <span class="st">"#3b6ea5"</span>)</span>
-<span id="cb6-50"><a href="#cb6-50" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-51"><a href="#cb6-51" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_set</span>(<span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">13</span>))</span>
-<span id="cb6-52"><a href="#cb6-52" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb6-53"><a href="#cb6-53" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-54"><a href="#cb6-54" aria-hidden="true" tabindex="-1"></a><span class="fu">## The sex ratio, three ways skewed</span></span>
-<span id="cb6-55"><a href="#cb6-55" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-56"><a href="#cb6-56" aria-hidden="true" tabindex="-1"></a>Every analysis starts here. Counting the **distinct individuals** ever captured at</span>
-<span id="cb6-57"><a href="#cb6-57" aria-hidden="true" tabindex="-1"></a>each site — not capture events — gives the population's operational sex ratio.</span>
-<span id="cb6-58"><a href="#cb6-58" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-59"><a href="#cb6-59" aria-hidden="true" tabindex="-1"></a><span class="in">```{r sex-ratio}</span></span>
-<span id="cb6-60"><a href="#cb6-60" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: 4.3</span></span>
-<span id="cb6-61"><a href="#cb6-61" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "Operational sex ratio at each site (distinct individuals, 2008–2023). The mainland is gently female-biased; the island plateau is overwhelmingly male — 13 males for every female."</span></span>
-<span id="cb6-62"><a href="#cb6-62" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-63"><a href="#cb6-63" aria-hidden="true" tabindex="-1"></a>sr <span class="ot">&lt;-</span> bc <span class="sc">|&gt;</span></span>
-<span id="cb6-64"><a href="#cb6-64" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>(individual, locality, habitat, Sex) <span class="sc">|&gt;</span></span>
-<span id="cb6-65"><a href="#cb6-65" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(locality, habitat, Sex) <span class="sc">|&gt;</span></span>
-<span id="cb6-66"><a href="#cb6-66" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">signed =</span> <span class="fu">if_else</span>(Sex <span class="sc">==</span> <span class="st">"Female"</span>, <span class="sc">-</span>n, n)) <span class="sc">|&gt;</span></span>
-<span id="cb6-67"><a href="#cb6-67" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(locality) <span class="sc">|&gt;</span></span>
-<span id="cb6-68"><a href="#cb6-68" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb6-69"><a href="#cb6-69" aria-hidden="true" tabindex="-1"></a>    <span class="at">total =</span> <span class="fu">sum</span>(n),</span>
-<span id="cb6-70"><a href="#cb6-70" aria-hidden="true" tabindex="-1"></a>    <span class="at">ratio =</span> n[Sex <span class="sc">==</span> <span class="st">"Male"</span>] <span class="sc">/</span> n[Sex <span class="sc">==</span> <span class="st">"Female"</span>]</span>
-<span id="cb6-71"><a href="#cb6-71" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
-<span id="cb6-72"><a href="#cb6-72" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
-<span id="cb6-73"><a href="#cb6-73" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-74"><a href="#cb6-74" aria-hidden="true" tabindex="-1"></a>ratio_lab <span class="ot">&lt;-</span> sr <span class="sc">|&gt;</span></span>
-<span id="cb6-75"><a href="#cb6-75" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>(locality, habitat, ratio, total) <span class="sc">|&gt;</span></span>
-<span id="cb6-76"><a href="#cb6-76" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">lab =</span> <span class="fu">sprintf</span>(<span class="st">"%.1f males per female"</span>, ratio))</span>
-<span id="cb6-77"><a href="#cb6-77" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-78"><a href="#cb6-78" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(sr, <span class="fu">aes</span>(signed, <span class="fu">fct_rev</span>(locality), <span class="at">fill =</span> Sex)) <span class="sc">+</span></span>
-<span id="cb6-79"><a href="#cb6-79" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">width =</span> <span class="fl">0.62</span>) <span class="sc">+</span></span>
-<span id="cb6-80"><a href="#cb6-80" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">0</span>, <span class="at">colour =</span> <span class="st">"grey30"</span>, <span class="at">linewidth =</span> <span class="fl">0.4</span>) <span class="sc">+</span></span>
-<span id="cb6-81"><a href="#cb6-81" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(</span>
-<span id="cb6-82"><a href="#cb6-82" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> ratio_lab, <span class="at">inherit.aes =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb6-83"><a href="#cb6-83" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> <span class="dv">0</span>, <span class="at">y =</span> <span class="fu">fct_rev</span>(locality), <span class="at">label =</span> lab),</span>
-<span id="cb6-84"><a href="#cb6-84" aria-hidden="true" tabindex="-1"></a>    <span class="at">vjust =</span> <span class="sc">-</span><span class="fl">2.0</span>, <span class="at">size =</span> <span class="fl">3.3</span>, <span class="at">colour =</span> <span class="st">"grey25"</span>, <span class="at">fontface =</span> <span class="st">"bold"</span></span>
-<span id="cb6-85"><a href="#cb6-85" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb6-86"><a href="#cb6-86" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> sex_pal) <span class="sc">+</span></span>
-<span id="cb6-87"><a href="#cb6-87" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(</span>
-<span id="cb6-88"><a href="#cb6-88" aria-hidden="true" tabindex="-1"></a>    <span class="at">labels =</span> \(x) scales<span class="sc">::</span><span class="fu">comma</span>(<span class="fu">abs</span>(x)),</span>
-<span id="cb6-89"><a href="#cb6-89" aria-hidden="true" tabindex="-1"></a>    <span class="at">expand =</span> <span class="fu">expansion</span>(<span class="fu">c</span>(<span class="fl">0.04</span>, <span class="fl">0.08</span>))</span>
-<span id="cb6-90"><a href="#cb6-90" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb6-91"><a href="#cb6-91" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb6-92"><a href="#cb6-92" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"An island of males, a mainland of mothers"</span>,</span>
-<span id="cb6-93"><a href="#cb6-93" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"Distinct tortoises captured 2008–2023, by site · ← females  |  males →"</span>,</span>
-<span id="cb6-94"><a href="#cb6-94" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Number of individuals"</span>, <span class="at">y =</span> <span class="cn">NULL</span>, <span class="at">fill =</span> <span class="cn">NULL</span></span>
-<span id="cb6-95"><a href="#cb6-95" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb6-96"><a href="#cb6-96" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"top"</span>)</span>
-<span id="cb6-97"><a href="#cb6-97" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb6-98"><a href="#cb6-98" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-99"><a href="#cb6-99" aria-hidden="true" tabindex="-1"></a>The contrast is the whole story in miniature. At the mainland site, females</span>
-<span id="cb6-100"><a href="#cb6-100" aria-hidden="true" tabindex="-1"></a>*outnumber* males (0.6 males per female) — the unremarkable state of a healthy</span>
-<span id="cb6-101"><a href="#cb6-101" aria-hidden="true" tabindex="-1"></a>tortoise population. On the island beach, males edge ahead (1.8:1). On the island</span>
-<span id="cb6-102"><a href="#cb6-102" aria-hidden="true" tabindex="-1"></a>plateau, the ratio explodes to **13 males per female**. Of 1,172 plateau tortoises</span>
-<span id="cb6-103"><a href="#cb6-103" aria-hidden="true" tabindex="-1"></a>ever caught, just 84 were female.</span>
-<span id="cb6-104"><a href="#cb6-104" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-105"><a href="#cb6-105" aria-hidden="true" tabindex="-1"></a>A skewed adult sex ratio is not, on its own, fatal — one male can fertilise many</span>
-<span id="cb6-106"><a href="#cb6-106" aria-hidden="true" tabindex="-1"></a>females. What makes it lethal here is what the crowding *does* to the few females</span>
-<span id="cb6-107"><a href="#cb6-107" aria-hidden="true" tabindex="-1"></a>that remain.</span>
-<span id="cb6-108"><a href="#cb6-108" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-109"><a href="#cb6-109" aria-hidden="true" tabindex="-1"></a><span class="fu">## The cost written on the body</span></span>
-<span id="cb6-110"><a href="#cb6-110" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-111"><a href="#cb6-111" aria-hidden="true" tabindex="-1"></a>The dataset's body-condition index (BCI) is mass adjusted for skeletal size: how much</span>
-<span id="cb6-112"><a href="#cb6-112" aria-hidden="true" tabindex="-1"></a>tortoise there is per millimetre of shell. Plotting raw mass against carapace length</span>
-<span id="cb6-113"><a href="#cb6-113" aria-hidden="true" tabindex="-1"></a>shows the females of each habitat as separate populations.</span>
-<span id="cb6-114"><a href="#cb6-114" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-115"><a href="#cb6-115" aria-hidden="true" tabindex="-1"></a><span class="in">```{r body-condition}</span></span>
-<span id="cb6-116"><a href="#cb6-116" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: 5.6</span></span>
-<span id="cb6-117"><a href="#cb6-117" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "Body mass vs carapace length for every capture. Mainland females (green) form a distinct heavy cluster; island females (orange) overlap the males, carrying far less mass for their size."</span></span>
-<span id="cb6-118"><a href="#cb6-118" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-119"><a href="#cb6-119" aria-hidden="true" tabindex="-1"></a>fem <span class="ot">&lt;-</span> bc <span class="sc">|&gt;</span> <span class="fu">filter</span>(Sex <span class="sc">==</span> <span class="st">"Female"</span>)</span>
-<span id="cb6-120"><a href="#cb6-120" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-121"><a href="#cb6-121" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(bc, <span class="fu">aes</span>(straight_carapace_length_mm, body_mass_grams)) <span class="sc">+</span></span>
-<span id="cb6-122"><a href="#cb6-122" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">colour =</span> habitat, <span class="at">shape =</span> Sex), <span class="at">alpha =</span> <span class="fl">0.25</span>, <span class="at">size =</span> <span class="fl">1.1</span>) <span class="sc">+</span></span>
-<span id="cb6-123"><a href="#cb6-123" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(</span>
-<span id="cb6-124"><a href="#cb6-124" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> fem, <span class="fu">aes</span>(<span class="at">colour =</span> habitat, <span class="at">group =</span> habitat),</span>
-<span id="cb6-125"><a href="#cb6-125" aria-hidden="true" tabindex="-1"></a>    <span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">linewidth =</span> <span class="fl">1.1</span>, <span class="at">formula =</span> y <span class="sc">~</span> x</span>
-<span id="cb6-126"><a href="#cb6-126" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb6-127"><a href="#cb6-127" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_colour_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">`</span><span class="at">Golem Grad island</span><span class="st">`</span> <span class="ot">=</span> island_col,</span>
-<span id="cb6-128"><a href="#cb6-128" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">Mainland =</span> main_col)) <span class="sc">+</span></span>
-<span id="cb6-129"><a href="#cb6-129" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_shape_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="at">Female =</span> <span class="dv">16</span>, <span class="at">Male =</span> <span class="dv">1</span>)) <span class="sc">+</span></span>
-<span id="cb6-130"><a href="#cb6-130" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span>comma) <span class="sc">+</span></span>
-<span id="cb6-131"><a href="#cb6-131" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb6-132"><a href="#cb6-132" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Mainland females grow large; island females stay lean"</span>,</span>
-<span id="cb6-133"><a href="#cb6-133" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"Each point a capture · lines fit to females only · island females carry the mass of island males"</span>,</span>
-<span id="cb6-134"><a href="#cb6-134" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Straight carapace length (mm)"</span>, <span class="at">y =</span> <span class="st">"Body mass (g)"</span>,</span>
-<span id="cb6-135"><a href="#cb6-135" aria-hidden="true" tabindex="-1"></a>    <span class="at">colour =</span> <span class="st">"Habitat"</span>, <span class="at">shape =</span> <span class="cn">NULL</span></span>
-<span id="cb6-136"><a href="#cb6-136" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb6-137"><a href="#cb6-137" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb6-138"><a href="#cb6-138" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-139"><a href="#cb6-139" aria-hidden="true" tabindex="-1"></a>A mainland female averages **1,615 g**; an island-plateau female just **1,105 g** —</span>
-<span id="cb6-140"><a href="#cb6-140" aria-hidden="true" tabindex="-1"></a>a third lighter, despite similar shell lengths. Her body-condition index (8.1 vs 6.2)</span>
-<span id="cb6-141"><a href="#cb6-141" aria-hidden="true" tabindex="-1"></a>tells the same story. The island females are not small tortoises; they are</span>
-<span id="cb6-142"><a href="#cb6-142" aria-hidden="true" tabindex="-1"></a>*emaciated* ones, worn down by constant harassment, injury and the energetic cost of</span>
-<span id="cb6-143"><a href="#cb6-143" aria-hidden="true" tabindex="-1"></a>fleeing — exactly the mechanism the paper documents. And body mass is not a vanity</span>
-<span id="cb6-144"><a href="#cb6-144" aria-hidden="true" tabindex="-1"></a>metric for a tortoise. It is the currency of reproduction.</span>
-<span id="cb6-145"><a href="#cb6-145" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-146"><a href="#cb6-146" aria-hidden="true" tabindex="-1"></a><span class="fu">## Why lean females mean few eggs</span></span>
-<span id="cb6-147"><a href="#cb6-147" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-148"><a href="#cb6-148" aria-hidden="true" tabindex="-1"></a>A separate dataset records clutch sizes for 53 nesting females. Egg number scales</span>
-<span id="cb6-149"><a href="#cb6-149" aria-hidden="true" tabindex="-1"></a>almost linearly with body mass — and that single relationship converts the</span>
-<span id="cb6-150"><a href="#cb6-150" aria-hidden="true" tabindex="-1"></a>body-condition gap directly into a fertility gap.</span>
-<span id="cb6-151"><a href="#cb6-151" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-152"><a href="#cb6-152" aria-hidden="true" tabindex="-1"></a><span class="in">```{r clutch}</span></span>
-<span id="cb6-153"><a href="#cb6-153" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: 5</span></span>
-<span id="cb6-154"><a href="#cb6-154" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "Clutch size against body mass for 53 nesting females. Each kilogram of body mass buys ~3.3 more eggs; island females (orange) cluster at the low-mass, low-egg corner the mainland females (green) have left behind."</span></span>
-<span id="cb6-155"><a href="#cb6-155" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-156"><a href="#cb6-156" aria-hidden="true" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">lm</span>(eggs <span class="sc">~</span> body_mass_grams, <span class="at">data =</span> cl)</span>
-<span id="cb6-157"><a href="#cb6-157" aria-hidden="true" tabindex="-1"></a>slope_per_kg <span class="ot">&lt;-</span> <span class="fu">coef</span>(fit)[[<span class="st">"body_mass_grams"</span>]] <span class="sc">*</span> <span class="dv">1000</span></span>
-<span id="cb6-158"><a href="#cb6-158" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-159"><a href="#cb6-159" aria-hidden="true" tabindex="-1"></a>cl_hab <span class="ot">&lt;-</span> cl <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">habitat =</span> hab[<span class="fu">as.character</span>(locality)])</span>
-<span id="cb6-160"><a href="#cb6-160" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-161"><a href="#cb6-161" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(cl_hab, <span class="fu">aes</span>(body_mass_grams, eggs)) <span class="sc">+</span></span>
-<span id="cb6-162"><a href="#cb6-162" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">formula =</span> y <span class="sc">~</span> x, <span class="at">colour =</span> <span class="st">"grey40"</span>,</span>
-<span id="cb6-163"><a href="#cb6-163" aria-hidden="true" tabindex="-1"></a>              <span class="at">fill =</span> <span class="st">"grey85"</span>, <span class="at">linewidth =</span> <span class="fl">0.8</span>) <span class="sc">+</span></span>
-<span id="cb6-164"><a href="#cb6-164" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">colour =</span> habitat), <span class="at">size =</span> <span class="dv">3</span>, <span class="at">alpha =</span> <span class="fl">0.85</span>) <span class="sc">+</span></span>
-<span id="cb6-165"><a href="#cb6-165" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_colour_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">`</span><span class="at">Golem Grad island</span><span class="st">`</span> <span class="ot">=</span> island_col,</span>
-<span id="cb6-166"><a href="#cb6-166" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">Mainland =</span> main_col)) <span class="sc">+</span></span>
-<span id="cb6-167"><a href="#cb6-167" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span>comma) <span class="sc">+</span></span>
-<span id="cb6-168"><a href="#cb6-168" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">x =</span> <span class="dv">1250</span>, <span class="at">y =</span> <span class="fl">10.5</span>,</span>
-<span id="cb6-169"><a href="#cb6-169" aria-hidden="true" tabindex="-1"></a>           <span class="at">label =</span> <span class="fu">sprintf</span>(<span class="st">"+%.1f eggs per extra kg</span><span class="sc">\n</span><span class="st">(r = %.2f)"</span>,</span>
-<span id="cb6-170"><a href="#cb6-170" aria-hidden="true" tabindex="-1"></a>                           slope_per_kg, <span class="fu">cor</span>(cl<span class="sc">$</span>eggs, cl<span class="sc">$</span>body_mass_grams)),</span>
-<span id="cb6-171"><a href="#cb6-171" aria-hidden="true" tabindex="-1"></a>           <span class="at">hjust =</span> <span class="dv">0</span>, <span class="at">size =</span> <span class="fl">3.6</span>, <span class="at">colour =</span> <span class="st">"grey25"</span>) <span class="sc">+</span></span>
-<span id="cb6-172"><a href="#cb6-172" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb6-173"><a href="#cb6-173" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Body mass buys eggs — and island females are short on both"</span>,</span>
-<span id="cb6-174"><a href="#cb6-174" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"53 clutches · the regression turns the 500 g condition gap into roughly two fewer eggs per nesting"</span>,</span>
-<span id="cb6-175"><a href="#cb6-175" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Body mass (g)"</span>, <span class="at">y =</span> <span class="st">"Eggs in clutch"</span>, <span class="at">colour =</span> <span class="st">"Habitat"</span></span>
-<span id="cb6-176"><a href="#cb6-176" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb6-177"><a href="#cb6-177" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb6-178"><a href="#cb6-178" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-179"><a href="#cb6-179" aria-hidden="true" tabindex="-1"></a>The relationship is tight (r = 0.90). A mainland female lays around **6 eggs**; an</span>
-<span id="cb6-180"><a href="#cb6-180" aria-hidden="true" tabindex="-1"></a>island female, **3–4**. The 500-gram condition deficit alone costs roughly **two</span>
-<span id="cb6-181"><a href="#cb6-181" aria-hidden="true" tabindex="-1"></a>eggs per clutch** — before accounting for the fact that harassed island females also</span>
-<span id="cb6-182"><a href="#cb6-182" aria-hidden="true" tabindex="-1"></a>nest *less often*.</span>
-<span id="cb6-183"><a href="#cb6-183" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-184"><a href="#cb6-184" aria-hidden="true" tabindex="-1"></a><span class="fu">## The compounding trap</span></span>
-<span id="cb6-185"><a href="#cb6-185" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-186"><a href="#cb6-186" aria-hidden="true" tabindex="-1"></a>Stack the three findings and the "demographic suicide" of the paper's title stops</span>
-<span id="cb6-187"><a href="#cb6-187" aria-hidden="true" tabindex="-1"></a>being rhetorical. Picture 100 island tortoises against 100 on the mainland:</span>
-<span id="cb6-188"><a href="#cb6-188" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-189"><a href="#cb6-189" aria-hidden="true" tabindex="-1"></a><span class="in">```{r compound}</span></span>
-<span id="cb6-190"><a href="#cb6-190" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: 4.6</span></span>
-<span id="cb6-191"><a href="#cb6-191" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "A back-of-envelope reproductive accounting per 100 adults, combining the three measured gaps: how many are female, their relative clutch size, and the resulting relative egg output. Illustrative — it chains observed averages, not a population model."</span></span>
-<span id="cb6-192"><a href="#cb6-192" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-193"><a href="#cb6-193" aria-hidden="true" tabindex="-1"></a><span class="co"># Per-100-adult reproductive accounting from the observed averages</span></span>
-<span id="cb6-194"><a href="#cb6-194" aria-hidden="true" tabindex="-1"></a>fem_share <span class="ot">&lt;-</span> bc <span class="sc">|&gt;</span></span>
-<span id="cb6-195"><a href="#cb6-195" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>(individual, habitat, Sex) <span class="sc">|&gt;</span></span>
-<span id="cb6-196"><a href="#cb6-196" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(habitat, Sex) <span class="sc">|&gt;</span></span>
-<span id="cb6-197"><a href="#cb6-197" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(habitat) <span class="sc">|&gt;</span></span>
-<span id="cb6-198"><a href="#cb6-198" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">females_per_100 =</span> <span class="dv">100</span> <span class="sc">*</span> n[Sex <span class="sc">==</span> <span class="st">"Female"</span>] <span class="sc">/</span> <span class="fu">sum</span>(n), <span class="at">.groups =</span> <span class="st">"drop"</span>)</span>
-<span id="cb6-199"><a href="#cb6-199" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-200"><a href="#cb6-200" aria-hidden="true" tabindex="-1"></a>clutch_by_hab <span class="ot">&lt;-</span> cl <span class="sc">|&gt;</span></span>
-<span id="cb6-201"><a href="#cb6-201" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">habitat =</span> hab[<span class="fu">as.character</span>(locality)]) <span class="sc">|&gt;</span></span>
-<span id="cb6-202"><a href="#cb6-202" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">eggs =</span> <span class="fu">mean</span>(eggs), <span class="at">.by =</span> habitat)</span>
-<span id="cb6-203"><a href="#cb6-203" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-204"><a href="#cb6-204" aria-hidden="true" tabindex="-1"></a>acct <span class="ot">&lt;-</span> fem_share <span class="sc">|&gt;</span></span>
-<span id="cb6-205"><a href="#cb6-205" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(clutch_by_hab, <span class="at">by =</span> <span class="st">"habitat"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb6-206"><a href="#cb6-206" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb6-207"><a href="#cb6-207" aria-hidden="true" tabindex="-1"></a>    <span class="at">egg_output =</span> females_per_100 <span class="sc">*</span> eggs,</span>
-<span id="cb6-208"><a href="#cb6-208" aria-hidden="true" tabindex="-1"></a>    <span class="at">habitat =</span> <span class="fu">factor</span>(habitat, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Mainland"</span>, <span class="st">"Golem Grad island"</span>))</span>
-<span id="cb6-209"><a href="#cb6-209" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
-<span id="cb6-210"><a href="#cb6-210" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="fu">c</span>(females_per_100, eggs, egg_output)) <span class="sc">|&gt;</span></span>
-<span id="cb6-211"><a href="#cb6-211" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb6-212"><a href="#cb6-212" aria-hidden="true" tabindex="-1"></a>    <span class="at">name =</span> <span class="fu">recode</span>(name,</span>
-<span id="cb6-213"><a href="#cb6-213" aria-hidden="true" tabindex="-1"></a>      <span class="at">females_per_100 =</span> <span class="st">"Females per 100 adults"</span>,</span>
-<span id="cb6-214"><a href="#cb6-214" aria-hidden="true" tabindex="-1"></a>      <span class="at">eggs =</span> <span class="st">"Mean eggs per clutch"</span>,</span>
-<span id="cb6-215"><a href="#cb6-215" aria-hidden="true" tabindex="-1"></a>      <span class="at">egg_output =</span> <span class="st">"Relative egg output</span><span class="sc">\n</span><span class="st">(females × clutch)"</span></span>
-<span id="cb6-216"><a href="#cb6-216" aria-hidden="true" tabindex="-1"></a>    ),</span>
-<span id="cb6-217"><a href="#cb6-217" aria-hidden="true" tabindex="-1"></a>    <span class="at">name =</span> <span class="fu">factor</span>(name, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Females per 100 adults"</span>, <span class="st">"Mean eggs per clutch"</span>,</span>
-<span id="cb6-218"><a href="#cb6-218" aria-hidden="true" tabindex="-1"></a>                                   <span class="st">"Relative egg output</span><span class="sc">\n</span><span class="st">(females × clutch)"</span>))</span>
-<span id="cb6-219"><a href="#cb6-219" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb6-220"><a href="#cb6-220" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-221"><a href="#cb6-221" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(acct, <span class="fu">aes</span>(value, <span class="fu">fct_rev</span>(habitat), <span class="at">fill =</span> habitat)) <span class="sc">+</span></span>
-<span id="cb6-222"><a href="#cb6-222" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">width =</span> <span class="fl">0.6</span>) <span class="sc">+</span></span>
-<span id="cb6-223"><a href="#cb6-223" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">round</span>(value)), <span class="at">hjust =</span> <span class="sc">-</span><span class="fl">0.2</span>, <span class="at">size =</span> <span class="fl">3.4</span>, <span class="at">colour =</span> <span class="st">"grey25"</span>) <span class="sc">+</span></span>
-<span id="cb6-224"><a href="#cb6-224" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>name, <span class="at">scales =</span> <span class="st">"free_x"</span>) <span class="sc">+</span></span>
-<span id="cb6-225"><a href="#cb6-225" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">`</span><span class="at">Golem Grad island</span><span class="st">`</span> <span class="ot">=</span> island_col,</span>
-<span id="cb6-226"><a href="#cb6-226" aria-hidden="true" tabindex="-1"></a>                               <span class="at">Mainland =</span> main_col), <span class="at">guide =</span> <span class="st">"none"</span>) <span class="sc">+</span></span>
-<span id="cb6-227"><a href="#cb6-227" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">expand =</span> <span class="fu">expansion</span>(<span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.18</span>))) <span class="sc">+</span></span>
-<span id="cb6-228"><a href="#cb6-228" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb6-229"><a href="#cb6-229" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Two modest gaps multiply into a tenfold collapse in egg output"</span>,</span>
-<span id="cb6-230"><a href="#cb6-230" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"Per 100 adults: fewer females × smaller clutches — and nesting frequency isn't even counted here"</span>,</span>
-<span id="cb6-231"><a href="#cb6-231" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="cn">NULL</span>, <span class="at">y =</span> <span class="cn">NULL</span></span>
-<span id="cb6-232"><a href="#cb6-232" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb6-233"><a href="#cb6-233" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">panel.spacing =</span> <span class="fu">unit</span>(<span class="fl">1.1</span>, <span class="st">"lines"</span>))</span>
-<span id="cb6-234"><a href="#cb6-234" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb6-235"><a href="#cb6-235" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-236"><a href="#cb6-236" aria-hidden="true" tabindex="-1"></a>The two ingredients multiply. The mainland's 100 adults include ~61 females laying</span>
-<span id="cb6-237"><a href="#cb6-237" aria-hidden="true" tabindex="-1"></a>~6 eggs; the island's include ~10 females laying ~3. That is roughly **370 versus 30</span>
-<span id="cb6-238"><a href="#cb6-238" aria-hidden="true" tabindex="-1"></a>units of egg output** — more than a tenfold gap from just two of the measured effects,</span>
-<span id="cb6-239"><a href="#cb6-239" aria-hidden="true" tabindex="-1"></a>and the harassment also depresses how often island females nest at all. A population</span>
-<span id="cb6-240"><a href="#cb6-240" aria-hidden="true" tabindex="-1"></a>producing a fraction of the eggs, with each new female facing the same gauntlet that</span>
-<span id="cb6-241"><a href="#cb6-241" aria-hidden="true" tabindex="-1"></a>emaciated her mother, has no path back to balance on its own.</span>
-<span id="cb6-242"><a href="#cb6-242" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-243"><a href="#cb6-243" aria-hidden="true" tabindex="-1"></a><span class="fu">## A note on what the data can and can't say</span></span>
-<span id="cb6-244"><a href="#cb6-244" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-245"><a href="#cb6-245" aria-hidden="true" tabindex="-1"></a>This is observational capture–recapture data across three sites, not an experiment.</span>
-<span id="cb6-246"><a href="#cb6-246" aria-hidden="true" tabindex="-1"></a>The sites differ in more than crowding, and capture effort varied by year (the</span>
-<span id="cb6-247"><a href="#cb6-247" aria-hidden="true" tabindex="-1"></a>plateau was sampled far more intensively than the beach or mainland), so the *raw</span>
-<span id="cb6-248"><a href="#cb6-248" aria-hidden="true" tabindex="-1"></a>counts* reflect sampling as well as biology — which is exactly why this page works in</span>
-<span id="cb6-249"><a href="#cb6-249" aria-hidden="true" tabindex="-1"></a>**ratios and per-individual measures** rather than totals. The body-condition and</span>
-<span id="cb6-250"><a href="#cb6-250" aria-hidden="true" tabindex="-1"></a>clutch relationships, though, are within-female biology that sampling intensity does</span>
-<span id="cb6-251"><a href="#cb6-251" aria-hidden="true" tabindex="-1"></a>not distort, and they point the same way the authors' formal model does. The 2083</span>
-<span id="cb6-252"><a href="#cb6-252" aria-hidden="true" tabindex="-1"></a>extinction date is theirs, from an integral projection model; what the public data</span>
-<span id="cb6-253"><a href="#cb6-253" aria-hidden="true" tabindex="-1"></a>let us do is watch the gears of it turn.</span>
-<span id="cb6-254"><a href="#cb6-254" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-255"><a href="#cb6-255" aria-hidden="true" tabindex="-1"></a>::: {.callout-tip collapse="true"}</span>
-<span id="cb6-256"><a href="#cb6-256" aria-hidden="true" tabindex="-1"></a><span class="fu">## Data &amp; sources</span></span>
-<span id="cb6-257"><a href="#cb6-257" aria-hidden="true" tabindex="-1"></a>Golmetz *et al.* (2026), *"Sex ratio bias triggers demographic suicide in a dense</span>
-<span id="cb6-258"><a href="#cb6-258" aria-hidden="true" tabindex="-1"></a>tortoise population"*, [*Ecology Letters*</span>
-<span id="cb6-259"><a href="#cb6-259" aria-hidden="true" tabindex="-1"></a>70296](https://onlinelibrary.wiley.com/doi/10.1111/ele.70296); data via</span>
-<span id="cb6-260"><a href="#cb6-260" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">TidyTuesday 2026-03-03</span><span class="co">](https://github.com/rfordatascience/tidytuesday/tree/main/data/2026/2026-03-03)</span></span>
-<span id="cb6-261"><a href="#cb6-261" aria-hidden="true" tabindex="-1"></a>(curated by Novica Nakov). 10,174 body-condition captures of ~2,300 individuals;</span>
-<span id="cb6-262"><a href="#cb6-262" aria-hidden="true" tabindex="-1"></a>53 measured clutches. Sites: Plateau and Beach (Golem Grad island), Konjsko (mainland).</span>
-<span id="cb6-263"><a href="#cb6-263" aria-hidden="true" tabindex="-1"></a>:::</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="fu">## Session 2 · autonomously developed · Claude Fable 5</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>Dataset choice, analytical angle, figures and prose are Claude Fable 5's, produced working</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>autonomously with no human steering during the session.</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">How the sessions differ</span><span class="co">](index.qmd)</span>.</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>Golem Grad is a small island in Lake Prespa, on the borders of North Macedonia,</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>Albania and Greece. It carries one of the densest known populations of Hermann's</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>tortoise — and that density has become a trap. A [2026 paper in *Ecology</span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>Letters*](https://onlinelibrary.wiley.com/doi/10.1111/ele.70296) reports that</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>sexually coercive males so badly outnumber and harass females that the island</span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>population is in a slow, self-inflicted collapse: an "ongoing extinction event"</span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>whose models predict the **last island female will die in 2083**.</span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>Sixteen years of capture–recapture data (2008–2023) sit behind that sentence. This</span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>page is an attempt to *see* the mechanism — not to model the extinction, but to lay</span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>out, measurement by measurement, why a crowded island becomes a demographic</span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>dead end. Three sites anchor the comparison: two on the island itself (the cliff-edged</span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>**Plateau** and the **Beach** below it) and a mainland reference population at</span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>**Konjsko**.</span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a><span class="in">```{r setup}</span></span>
+<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a>bc <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/tortoise_body_condition_cleaned.csv"</span>, <span class="at">show_col_types =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a>cl <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/clutch_size_cleaned.csv"</span>, <span class="at">show_col_types =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a><span class="co"># Site → habitat, ordered island-first</span></span>
+<span id="cb6-36"><a href="#cb6-36" aria-hidden="true" tabindex="-1"></a>site_levels <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Plateau"</span>, <span class="st">"Beach"</span>, <span class="st">"Konjsko"</span>)</span>
+<span id="cb6-37"><a href="#cb6-37" aria-hidden="true" tabindex="-1"></a>hab <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="at">Plateau =</span> <span class="st">"Golem Grad island"</span>, <span class="at">Beach =</span> <span class="st">"Golem Grad island"</span>,</span>
+<span id="cb6-38"><a href="#cb6-38" aria-hidden="true" tabindex="-1"></a>         <span class="at">Konjsko =</span> <span class="st">"Mainland"</span>)</span>
+<span id="cb6-39"><a href="#cb6-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-40"><a href="#cb6-40" aria-hidden="true" tabindex="-1"></a>bc <span class="ot">&lt;-</span> bc <span class="sc">|&gt;</span></span>
+<span id="cb6-41"><a href="#cb6-41" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb6-42"><a href="#cb6-42" aria-hidden="true" tabindex="-1"></a>    <span class="at">locality =</span> <span class="fu">factor</span>(locality, <span class="at">levels =</span> site_levels),</span>
+<span id="cb6-43"><a href="#cb6-43" aria-hidden="true" tabindex="-1"></a>    <span class="at">habitat =</span> hab[<span class="fu">as.character</span>(locality)],</span>
+<span id="cb6-44"><a href="#cb6-44" aria-hidden="true" tabindex="-1"></a>    <span class="at">Sex =</span> <span class="fu">recode</span>(sex, <span class="at">f =</span> <span class="st">"Female"</span>, <span class="at">m =</span> <span class="st">"Male"</span>)</span>
+<span id="cb6-45"><a href="#cb6-45" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb6-46"><a href="#cb6-46" aria-hidden="true" tabindex="-1"></a>cl <span class="ot">&lt;-</span> cl <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">locality =</span> <span class="fu">factor</span>(locality, <span class="at">levels =</span> site_levels))</span>
+<span id="cb6-47"><a href="#cb6-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-48"><a href="#cb6-48" aria-hidden="true" tabindex="-1"></a>island_col <span class="ot">&lt;-</span> <span class="st">"#b5651d"</span>   <span class="co"># warm terracotta = island</span></span>
+<span id="cb6-49"><a href="#cb6-49" aria-hidden="true" tabindex="-1"></a>main_col   <span class="ot">&lt;-</span> <span class="st">"#2f6b53"</span>   <span class="co"># green = mainland</span></span>
+<span id="cb6-50"><a href="#cb6-50" aria-hidden="true" tabindex="-1"></a>sex_pal    <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="at">Female =</span> <span class="st">"#c2456b"</span>, <span class="at">Male =</span> <span class="st">"#3b6ea5"</span>)</span>
+<span id="cb6-51"><a href="#cb6-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-52"><a href="#cb6-52" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_set</span>(<span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">13</span>))</span>
+<span id="cb6-53"><a href="#cb6-53" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb6-54"><a href="#cb6-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-55"><a href="#cb6-55" aria-hidden="true" tabindex="-1"></a><span class="fu">## The sex ratio, three ways skewed</span></span>
+<span id="cb6-56"><a href="#cb6-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-57"><a href="#cb6-57" aria-hidden="true" tabindex="-1"></a>Every analysis starts here. Counting the **distinct individuals** ever captured at</span>
+<span id="cb6-58"><a href="#cb6-58" aria-hidden="true" tabindex="-1"></a>each site — not capture events — gives the population's operational sex ratio.</span>
+<span id="cb6-59"><a href="#cb6-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-60"><a href="#cb6-60" aria-hidden="true" tabindex="-1"></a><span class="in">```{r sex-ratio}</span></span>
+<span id="cb6-61"><a href="#cb6-61" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: 4.3</span></span>
+<span id="cb6-62"><a href="#cb6-62" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "Operational sex ratio at each site (distinct individuals, 2008–2023). The mainland is gently female-biased; the island plateau is overwhelmingly male — 13 males for every female."</span></span>
+<span id="cb6-63"><a href="#cb6-63" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-64"><a href="#cb6-64" aria-hidden="true" tabindex="-1"></a>sr <span class="ot">&lt;-</span> bc <span class="sc">|&gt;</span></span>
+<span id="cb6-65"><a href="#cb6-65" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>(individual, locality, habitat, Sex) <span class="sc">|&gt;</span></span>
+<span id="cb6-66"><a href="#cb6-66" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(locality, habitat, Sex) <span class="sc">|&gt;</span></span>
+<span id="cb6-67"><a href="#cb6-67" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">signed =</span> <span class="fu">if_else</span>(Sex <span class="sc">==</span> <span class="st">"Female"</span>, <span class="sc">-</span>n, n)) <span class="sc">|&gt;</span></span>
+<span id="cb6-68"><a href="#cb6-68" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(locality) <span class="sc">|&gt;</span></span>
+<span id="cb6-69"><a href="#cb6-69" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb6-70"><a href="#cb6-70" aria-hidden="true" tabindex="-1"></a>    <span class="at">total =</span> <span class="fu">sum</span>(n),</span>
+<span id="cb6-71"><a href="#cb6-71" aria-hidden="true" tabindex="-1"></a>    <span class="at">ratio =</span> n[Sex <span class="sc">==</span> <span class="st">"Male"</span>] <span class="sc">/</span> n[Sex <span class="sc">==</span> <span class="st">"Female"</span>]</span>
+<span id="cb6-72"><a href="#cb6-72" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb6-73"><a href="#cb6-73" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
+<span id="cb6-74"><a href="#cb6-74" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-75"><a href="#cb6-75" aria-hidden="true" tabindex="-1"></a>ratio_lab <span class="ot">&lt;-</span> sr <span class="sc">|&gt;</span></span>
+<span id="cb6-76"><a href="#cb6-76" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>(locality, habitat, ratio, total) <span class="sc">|&gt;</span></span>
+<span id="cb6-77"><a href="#cb6-77" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">lab =</span> <span class="fu">sprintf</span>(<span class="st">"%.1f males per female"</span>, ratio))</span>
+<span id="cb6-78"><a href="#cb6-78" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-79"><a href="#cb6-79" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(sr, <span class="fu">aes</span>(signed, <span class="fu">fct_rev</span>(locality), <span class="at">fill =</span> Sex)) <span class="sc">+</span></span>
+<span id="cb6-80"><a href="#cb6-80" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">width =</span> <span class="fl">0.62</span>) <span class="sc">+</span></span>
+<span id="cb6-81"><a href="#cb6-81" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">0</span>, <span class="at">colour =</span> <span class="st">"grey30"</span>, <span class="at">linewidth =</span> <span class="fl">0.4</span>) <span class="sc">+</span></span>
+<span id="cb6-82"><a href="#cb6-82" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(</span>
+<span id="cb6-83"><a href="#cb6-83" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> ratio_lab, <span class="at">inherit.aes =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb6-84"><a href="#cb6-84" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> <span class="dv">0</span>, <span class="at">y =</span> <span class="fu">fct_rev</span>(locality), <span class="at">label =</span> lab),</span>
+<span id="cb6-85"><a href="#cb6-85" aria-hidden="true" tabindex="-1"></a>    <span class="at">vjust =</span> <span class="sc">-</span><span class="fl">2.0</span>, <span class="at">size =</span> <span class="fl">3.3</span>, <span class="at">colour =</span> <span class="st">"grey25"</span>, <span class="at">fontface =</span> <span class="st">"bold"</span></span>
+<span id="cb6-86"><a href="#cb6-86" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb6-87"><a href="#cb6-87" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> sex_pal) <span class="sc">+</span></span>
+<span id="cb6-88"><a href="#cb6-88" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(</span>
+<span id="cb6-89"><a href="#cb6-89" aria-hidden="true" tabindex="-1"></a>    <span class="at">labels =</span> \(x) scales<span class="sc">::</span><span class="fu">comma</span>(<span class="fu">abs</span>(x)),</span>
+<span id="cb6-90"><a href="#cb6-90" aria-hidden="true" tabindex="-1"></a>    <span class="at">expand =</span> <span class="fu">expansion</span>(<span class="fu">c</span>(<span class="fl">0.04</span>, <span class="fl">0.08</span>))</span>
+<span id="cb6-91"><a href="#cb6-91" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb6-92"><a href="#cb6-92" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb6-93"><a href="#cb6-93" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"An island of males, a mainland of mothers"</span>,</span>
+<span id="cb6-94"><a href="#cb6-94" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"Distinct tortoises captured 2008–2023, by site · ← females  |  males →"</span>,</span>
+<span id="cb6-95"><a href="#cb6-95" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Number of individuals"</span>, <span class="at">y =</span> <span class="cn">NULL</span>, <span class="at">fill =</span> <span class="cn">NULL</span></span>
+<span id="cb6-96"><a href="#cb6-96" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb6-97"><a href="#cb6-97" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"top"</span>)</span>
+<span id="cb6-98"><a href="#cb6-98" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb6-99"><a href="#cb6-99" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-100"><a href="#cb6-100" aria-hidden="true" tabindex="-1"></a>The contrast is the whole story in miniature. At the mainland site, females</span>
+<span id="cb6-101"><a href="#cb6-101" aria-hidden="true" tabindex="-1"></a>*outnumber* males (0.6 males per female) — the unremarkable state of a healthy</span>
+<span id="cb6-102"><a href="#cb6-102" aria-hidden="true" tabindex="-1"></a>tortoise population. On the island beach, males edge ahead (1.8:1). On the island</span>
+<span id="cb6-103"><a href="#cb6-103" aria-hidden="true" tabindex="-1"></a>plateau, the ratio explodes to **13 males per female**. Of 1,172 plateau tortoises</span>
+<span id="cb6-104"><a href="#cb6-104" aria-hidden="true" tabindex="-1"></a>ever caught, just 84 were female.</span>
+<span id="cb6-105"><a href="#cb6-105" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-106"><a href="#cb6-106" aria-hidden="true" tabindex="-1"></a>A skewed adult sex ratio is not, on its own, fatal — one male can fertilise many</span>
+<span id="cb6-107"><a href="#cb6-107" aria-hidden="true" tabindex="-1"></a>females. What makes it lethal here is what the crowding *does* to the few females</span>
+<span id="cb6-108"><a href="#cb6-108" aria-hidden="true" tabindex="-1"></a>that remain.</span>
+<span id="cb6-109"><a href="#cb6-109" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-110"><a href="#cb6-110" aria-hidden="true" tabindex="-1"></a><span class="fu">## The cost written on the body</span></span>
+<span id="cb6-111"><a href="#cb6-111" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-112"><a href="#cb6-112" aria-hidden="true" tabindex="-1"></a>The dataset's body-condition index (BCI) is mass adjusted for skeletal size: how much</span>
+<span id="cb6-113"><a href="#cb6-113" aria-hidden="true" tabindex="-1"></a>tortoise there is per millimetre of shell. Plotting raw mass against carapace length</span>
+<span id="cb6-114"><a href="#cb6-114" aria-hidden="true" tabindex="-1"></a>shows the females of each habitat as separate populations.</span>
+<span id="cb6-115"><a href="#cb6-115" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-116"><a href="#cb6-116" aria-hidden="true" tabindex="-1"></a><span class="in">```{r body-condition}</span></span>
+<span id="cb6-117"><a href="#cb6-117" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: 5.6</span></span>
+<span id="cb6-118"><a href="#cb6-118" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "Body mass vs carapace length for every capture. Mainland females (green) form a distinct heavy cluster; island females (orange) overlap the males, carrying far less mass for their size."</span></span>
+<span id="cb6-119"><a href="#cb6-119" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-120"><a href="#cb6-120" aria-hidden="true" tabindex="-1"></a>fem <span class="ot">&lt;-</span> bc <span class="sc">|&gt;</span> <span class="fu">filter</span>(Sex <span class="sc">==</span> <span class="st">"Female"</span>)</span>
+<span id="cb6-121"><a href="#cb6-121" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-122"><a href="#cb6-122" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(bc, <span class="fu">aes</span>(straight_carapace_length_mm, body_mass_grams)) <span class="sc">+</span></span>
+<span id="cb6-123"><a href="#cb6-123" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">colour =</span> habitat, <span class="at">shape =</span> Sex), <span class="at">alpha =</span> <span class="fl">0.25</span>, <span class="at">size =</span> <span class="fl">1.1</span>) <span class="sc">+</span></span>
+<span id="cb6-124"><a href="#cb6-124" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(</span>
+<span id="cb6-125"><a href="#cb6-125" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> fem, <span class="fu">aes</span>(<span class="at">colour =</span> habitat, <span class="at">group =</span> habitat),</span>
+<span id="cb6-126"><a href="#cb6-126" aria-hidden="true" tabindex="-1"></a>    <span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">linewidth =</span> <span class="fl">1.1</span>, <span class="at">formula =</span> y <span class="sc">~</span> x</span>
+<span id="cb6-127"><a href="#cb6-127" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb6-128"><a href="#cb6-128" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_colour_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">`</span><span class="at">Golem Grad island</span><span class="st">`</span> <span class="ot">=</span> island_col,</span>
+<span id="cb6-129"><a href="#cb6-129" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">Mainland =</span> main_col)) <span class="sc">+</span></span>
+<span id="cb6-130"><a href="#cb6-130" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_shape_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="at">Female =</span> <span class="dv">16</span>, <span class="at">Male =</span> <span class="dv">1</span>)) <span class="sc">+</span></span>
+<span id="cb6-131"><a href="#cb6-131" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span>comma) <span class="sc">+</span></span>
+<span id="cb6-132"><a href="#cb6-132" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb6-133"><a href="#cb6-133" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Mainland females grow large; island females stay lean"</span>,</span>
+<span id="cb6-134"><a href="#cb6-134" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"Each point a capture · lines fit to females only · island females carry the mass of island males"</span>,</span>
+<span id="cb6-135"><a href="#cb6-135" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Straight carapace length (mm)"</span>, <span class="at">y =</span> <span class="st">"Body mass (g)"</span>,</span>
+<span id="cb6-136"><a href="#cb6-136" aria-hidden="true" tabindex="-1"></a>    <span class="at">colour =</span> <span class="st">"Habitat"</span>, <span class="at">shape =</span> <span class="cn">NULL</span></span>
+<span id="cb6-137"><a href="#cb6-137" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb6-138"><a href="#cb6-138" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb6-139"><a href="#cb6-139" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-140"><a href="#cb6-140" aria-hidden="true" tabindex="-1"></a>A mainland female averages **1,615 g**; an island-plateau female just **1,105 g** —</span>
+<span id="cb6-141"><a href="#cb6-141" aria-hidden="true" tabindex="-1"></a>a third lighter, despite similar shell lengths. Her body-condition index (8.1 vs 6.2)</span>
+<span id="cb6-142"><a href="#cb6-142" aria-hidden="true" tabindex="-1"></a>tells the same story. The island females are not small tortoises; they are</span>
+<span id="cb6-143"><a href="#cb6-143" aria-hidden="true" tabindex="-1"></a>*emaciated* ones, worn down by constant harassment, injury and the energetic cost of</span>
+<span id="cb6-144"><a href="#cb6-144" aria-hidden="true" tabindex="-1"></a>fleeing — exactly the mechanism the paper documents. And body mass is not a vanity</span>
+<span id="cb6-145"><a href="#cb6-145" aria-hidden="true" tabindex="-1"></a>metric for a tortoise. It is the currency of reproduction.</span>
+<span id="cb6-146"><a href="#cb6-146" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-147"><a href="#cb6-147" aria-hidden="true" tabindex="-1"></a><span class="fu">## Why lean females mean few eggs</span></span>
+<span id="cb6-148"><a href="#cb6-148" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-149"><a href="#cb6-149" aria-hidden="true" tabindex="-1"></a>A separate dataset records clutch sizes for 53 nesting females. Egg number scales</span>
+<span id="cb6-150"><a href="#cb6-150" aria-hidden="true" tabindex="-1"></a>almost linearly with body mass — and that single relationship converts the</span>
+<span id="cb6-151"><a href="#cb6-151" aria-hidden="true" tabindex="-1"></a>body-condition gap directly into a fertility gap.</span>
+<span id="cb6-152"><a href="#cb6-152" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-153"><a href="#cb6-153" aria-hidden="true" tabindex="-1"></a><span class="in">```{r clutch}</span></span>
+<span id="cb6-154"><a href="#cb6-154" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: 5</span></span>
+<span id="cb6-155"><a href="#cb6-155" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "Clutch size against body mass for 53 nesting females. Each kilogram of body mass buys ~3.3 more eggs; island females (orange) cluster at the low-mass, low-egg corner the mainland females (green) have left behind."</span></span>
+<span id="cb6-156"><a href="#cb6-156" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-157"><a href="#cb6-157" aria-hidden="true" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">lm</span>(eggs <span class="sc">~</span> body_mass_grams, <span class="at">data =</span> cl)</span>
+<span id="cb6-158"><a href="#cb6-158" aria-hidden="true" tabindex="-1"></a>slope_per_kg <span class="ot">&lt;-</span> <span class="fu">coef</span>(fit)[[<span class="st">"body_mass_grams"</span>]] <span class="sc">*</span> <span class="dv">1000</span></span>
+<span id="cb6-159"><a href="#cb6-159" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-160"><a href="#cb6-160" aria-hidden="true" tabindex="-1"></a>cl_hab <span class="ot">&lt;-</span> cl <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">habitat =</span> hab[<span class="fu">as.character</span>(locality)])</span>
+<span id="cb6-161"><a href="#cb6-161" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-162"><a href="#cb6-162" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(cl_hab, <span class="fu">aes</span>(body_mass_grams, eggs)) <span class="sc">+</span></span>
+<span id="cb6-163"><a href="#cb6-163" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">formula =</span> y <span class="sc">~</span> x, <span class="at">colour =</span> <span class="st">"grey40"</span>,</span>
+<span id="cb6-164"><a href="#cb6-164" aria-hidden="true" tabindex="-1"></a>              <span class="at">fill =</span> <span class="st">"grey85"</span>, <span class="at">linewidth =</span> <span class="fl">0.8</span>) <span class="sc">+</span></span>
+<span id="cb6-165"><a href="#cb6-165" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">colour =</span> habitat), <span class="at">size =</span> <span class="dv">3</span>, <span class="at">alpha =</span> <span class="fl">0.85</span>) <span class="sc">+</span></span>
+<span id="cb6-166"><a href="#cb6-166" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_colour_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">`</span><span class="at">Golem Grad island</span><span class="st">`</span> <span class="ot">=</span> island_col,</span>
+<span id="cb6-167"><a href="#cb6-167" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">Mainland =</span> main_col)) <span class="sc">+</span></span>
+<span id="cb6-168"><a href="#cb6-168" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span>comma) <span class="sc">+</span></span>
+<span id="cb6-169"><a href="#cb6-169" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">x =</span> <span class="dv">1250</span>, <span class="at">y =</span> <span class="fl">10.5</span>,</span>
+<span id="cb6-170"><a href="#cb6-170" aria-hidden="true" tabindex="-1"></a>           <span class="at">label =</span> <span class="fu">sprintf</span>(<span class="st">"+%.1f eggs per extra kg</span><span class="sc">\n</span><span class="st">(r = %.2f)"</span>,</span>
+<span id="cb6-171"><a href="#cb6-171" aria-hidden="true" tabindex="-1"></a>                           slope_per_kg, <span class="fu">cor</span>(cl<span class="sc">$</span>eggs, cl<span class="sc">$</span>body_mass_grams)),</span>
+<span id="cb6-172"><a href="#cb6-172" aria-hidden="true" tabindex="-1"></a>           <span class="at">hjust =</span> <span class="dv">0</span>, <span class="at">size =</span> <span class="fl">3.6</span>, <span class="at">colour =</span> <span class="st">"grey25"</span>) <span class="sc">+</span></span>
+<span id="cb6-173"><a href="#cb6-173" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb6-174"><a href="#cb6-174" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Body mass buys eggs — and island females are short on both"</span>,</span>
+<span id="cb6-175"><a href="#cb6-175" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"53 clutches · the regression turns the 500 g condition gap into roughly two fewer eggs per nesting"</span>,</span>
+<span id="cb6-176"><a href="#cb6-176" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Body mass (g)"</span>, <span class="at">y =</span> <span class="st">"Eggs in clutch"</span>, <span class="at">colour =</span> <span class="st">"Habitat"</span></span>
+<span id="cb6-177"><a href="#cb6-177" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb6-178"><a href="#cb6-178" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb6-179"><a href="#cb6-179" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-180"><a href="#cb6-180" aria-hidden="true" tabindex="-1"></a>The relationship is tight (r = 0.90). A mainland female lays around **6 eggs**; an</span>
+<span id="cb6-181"><a href="#cb6-181" aria-hidden="true" tabindex="-1"></a>island female, **3–4**. The 500-gram condition deficit alone costs roughly **two</span>
+<span id="cb6-182"><a href="#cb6-182" aria-hidden="true" tabindex="-1"></a>eggs per clutch** — before accounting for the fact that harassed island females also</span>
+<span id="cb6-183"><a href="#cb6-183" aria-hidden="true" tabindex="-1"></a>nest *less often*.</span>
+<span id="cb6-184"><a href="#cb6-184" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-185"><a href="#cb6-185" aria-hidden="true" tabindex="-1"></a><span class="fu">## The compounding trap</span></span>
+<span id="cb6-186"><a href="#cb6-186" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-187"><a href="#cb6-187" aria-hidden="true" tabindex="-1"></a>Stack the three findings and the "demographic suicide" of the paper's title stops</span>
+<span id="cb6-188"><a href="#cb6-188" aria-hidden="true" tabindex="-1"></a>being rhetorical. Picture 100 island tortoises against 100 on the mainland:</span>
+<span id="cb6-189"><a href="#cb6-189" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-190"><a href="#cb6-190" aria-hidden="true" tabindex="-1"></a><span class="in">```{r compound}</span></span>
+<span id="cb6-191"><a href="#cb6-191" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: 4.6</span></span>
+<span id="cb6-192"><a href="#cb6-192" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "A back-of-envelope reproductive accounting per 100 adults, combining the three measured gaps: how many are female, their relative clutch size, and the resulting relative egg output. Illustrative — it chains observed averages, not a population model."</span></span>
+<span id="cb6-193"><a href="#cb6-193" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-194"><a href="#cb6-194" aria-hidden="true" tabindex="-1"></a><span class="co"># Per-100-adult reproductive accounting from the observed averages</span></span>
+<span id="cb6-195"><a href="#cb6-195" aria-hidden="true" tabindex="-1"></a>fem_share <span class="ot">&lt;-</span> bc <span class="sc">|&gt;</span></span>
+<span id="cb6-196"><a href="#cb6-196" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>(individual, habitat, Sex) <span class="sc">|&gt;</span></span>
+<span id="cb6-197"><a href="#cb6-197" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(habitat, Sex) <span class="sc">|&gt;</span></span>
+<span id="cb6-198"><a href="#cb6-198" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(habitat) <span class="sc">|&gt;</span></span>
+<span id="cb6-199"><a href="#cb6-199" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">females_per_100 =</span> <span class="dv">100</span> <span class="sc">*</span> n[Sex <span class="sc">==</span> <span class="st">"Female"</span>] <span class="sc">/</span> <span class="fu">sum</span>(n), <span class="at">.groups =</span> <span class="st">"drop"</span>)</span>
+<span id="cb6-200"><a href="#cb6-200" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-201"><a href="#cb6-201" aria-hidden="true" tabindex="-1"></a>clutch_by_hab <span class="ot">&lt;-</span> cl <span class="sc">|&gt;</span></span>
+<span id="cb6-202"><a href="#cb6-202" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">habitat =</span> hab[<span class="fu">as.character</span>(locality)]) <span class="sc">|&gt;</span></span>
+<span id="cb6-203"><a href="#cb6-203" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">eggs =</span> <span class="fu">mean</span>(eggs), <span class="at">.by =</span> habitat)</span>
+<span id="cb6-204"><a href="#cb6-204" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-205"><a href="#cb6-205" aria-hidden="true" tabindex="-1"></a>acct <span class="ot">&lt;-</span> fem_share <span class="sc">|&gt;</span></span>
+<span id="cb6-206"><a href="#cb6-206" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(clutch_by_hab, <span class="at">by =</span> <span class="st">"habitat"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb6-207"><a href="#cb6-207" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb6-208"><a href="#cb6-208" aria-hidden="true" tabindex="-1"></a>    <span class="at">egg_output =</span> females_per_100 <span class="sc">*</span> eggs,</span>
+<span id="cb6-209"><a href="#cb6-209" aria-hidden="true" tabindex="-1"></a>    <span class="at">habitat =</span> <span class="fu">factor</span>(habitat, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Mainland"</span>, <span class="st">"Golem Grad island"</span>))</span>
+<span id="cb6-210"><a href="#cb6-210" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb6-211"><a href="#cb6-211" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="fu">c</span>(females_per_100, eggs, egg_output)) <span class="sc">|&gt;</span></span>
+<span id="cb6-212"><a href="#cb6-212" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb6-213"><a href="#cb6-213" aria-hidden="true" tabindex="-1"></a>    <span class="at">name =</span> <span class="fu">recode</span>(name,</span>
+<span id="cb6-214"><a href="#cb6-214" aria-hidden="true" tabindex="-1"></a>      <span class="at">females_per_100 =</span> <span class="st">"Females per 100 adults"</span>,</span>
+<span id="cb6-215"><a href="#cb6-215" aria-hidden="true" tabindex="-1"></a>      <span class="at">eggs =</span> <span class="st">"Mean eggs per clutch"</span>,</span>
+<span id="cb6-216"><a href="#cb6-216" aria-hidden="true" tabindex="-1"></a>      <span class="at">egg_output =</span> <span class="st">"Relative egg output</span><span class="sc">\n</span><span class="st">(females × clutch)"</span></span>
+<span id="cb6-217"><a href="#cb6-217" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb6-218"><a href="#cb6-218" aria-hidden="true" tabindex="-1"></a>    <span class="at">name =</span> <span class="fu">factor</span>(name, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Females per 100 adults"</span>, <span class="st">"Mean eggs per clutch"</span>,</span>
+<span id="cb6-219"><a href="#cb6-219" aria-hidden="true" tabindex="-1"></a>                                   <span class="st">"Relative egg output</span><span class="sc">\n</span><span class="st">(females × clutch)"</span>))</span>
+<span id="cb6-220"><a href="#cb6-220" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb6-221"><a href="#cb6-221" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-222"><a href="#cb6-222" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(acct, <span class="fu">aes</span>(value, <span class="fu">fct_rev</span>(habitat), <span class="at">fill =</span> habitat)) <span class="sc">+</span></span>
+<span id="cb6-223"><a href="#cb6-223" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">width =</span> <span class="fl">0.6</span>) <span class="sc">+</span></span>
+<span id="cb6-224"><a href="#cb6-224" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">round</span>(value)), <span class="at">hjust =</span> <span class="sc">-</span><span class="fl">0.2</span>, <span class="at">size =</span> <span class="fl">3.4</span>, <span class="at">colour =</span> <span class="st">"grey25"</span>) <span class="sc">+</span></span>
+<span id="cb6-225"><a href="#cb6-225" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>name, <span class="at">scales =</span> <span class="st">"free_x"</span>) <span class="sc">+</span></span>
+<span id="cb6-226"><a href="#cb6-226" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">`</span><span class="at">Golem Grad island</span><span class="st">`</span> <span class="ot">=</span> island_col,</span>
+<span id="cb6-227"><a href="#cb6-227" aria-hidden="true" tabindex="-1"></a>                               <span class="at">Mainland =</span> main_col), <span class="at">guide =</span> <span class="st">"none"</span>) <span class="sc">+</span></span>
+<span id="cb6-228"><a href="#cb6-228" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">expand =</span> <span class="fu">expansion</span>(<span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.18</span>))) <span class="sc">+</span></span>
+<span id="cb6-229"><a href="#cb6-229" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb6-230"><a href="#cb6-230" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Two modest gaps multiply into a tenfold collapse in egg output"</span>,</span>
+<span id="cb6-231"><a href="#cb6-231" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"Per 100 adults: fewer females × smaller clutches — and nesting frequency isn't even counted here"</span>,</span>
+<span id="cb6-232"><a href="#cb6-232" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="cn">NULL</span>, <span class="at">y =</span> <span class="cn">NULL</span></span>
+<span id="cb6-233"><a href="#cb6-233" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb6-234"><a href="#cb6-234" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">panel.spacing =</span> <span class="fu">unit</span>(<span class="fl">1.1</span>, <span class="st">"lines"</span>))</span>
+<span id="cb6-235"><a href="#cb6-235" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb6-236"><a href="#cb6-236" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-237"><a href="#cb6-237" aria-hidden="true" tabindex="-1"></a>The two ingredients multiply. The mainland's 100 adults include ~61 females laying</span>
+<span id="cb6-238"><a href="#cb6-238" aria-hidden="true" tabindex="-1"></a>~6 eggs; the island's include ~10 females laying ~3. That is roughly **370 versus 30</span>
+<span id="cb6-239"><a href="#cb6-239" aria-hidden="true" tabindex="-1"></a>units of egg output** — more than a tenfold gap from just two of the measured effects,</span>
+<span id="cb6-240"><a href="#cb6-240" aria-hidden="true" tabindex="-1"></a>and the harassment also depresses how often island females nest at all. A population</span>
+<span id="cb6-241"><a href="#cb6-241" aria-hidden="true" tabindex="-1"></a>producing a fraction of the eggs, with each new female facing the same gauntlet that</span>
+<span id="cb6-242"><a href="#cb6-242" aria-hidden="true" tabindex="-1"></a>emaciated her mother, has no path back to balance on its own.</span>
+<span id="cb6-243"><a href="#cb6-243" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-244"><a href="#cb6-244" aria-hidden="true" tabindex="-1"></a><span class="fu">## A note on what the data can and can't say</span></span>
+<span id="cb6-245"><a href="#cb6-245" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-246"><a href="#cb6-246" aria-hidden="true" tabindex="-1"></a>This is observational capture–recapture data across three sites, not an experiment.</span>
+<span id="cb6-247"><a href="#cb6-247" aria-hidden="true" tabindex="-1"></a>The sites differ in more than crowding, and capture effort varied by year (the</span>
+<span id="cb6-248"><a href="#cb6-248" aria-hidden="true" tabindex="-1"></a>plateau was sampled far more intensively than the beach or mainland), so the *raw</span>
+<span id="cb6-249"><a href="#cb6-249" aria-hidden="true" tabindex="-1"></a>counts* reflect sampling as well as biology — which is exactly why this page works in</span>
+<span id="cb6-250"><a href="#cb6-250" aria-hidden="true" tabindex="-1"></a>**ratios and per-individual measures** rather than totals. The body-condition and</span>
+<span id="cb6-251"><a href="#cb6-251" aria-hidden="true" tabindex="-1"></a>clutch relationships, though, are within-female biology that sampling intensity does</span>
+<span id="cb6-252"><a href="#cb6-252" aria-hidden="true" tabindex="-1"></a>not distort, and they point the same way the authors' formal model does. The 2083</span>
+<span id="cb6-253"><a href="#cb6-253" aria-hidden="true" tabindex="-1"></a>extinction date is theirs, from an integral projection model; what the public data</span>
+<span id="cb6-254"><a href="#cb6-254" aria-hidden="true" tabindex="-1"></a>let us do is watch the gears of it turn.</span>
+<span id="cb6-255"><a href="#cb6-255" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-256"><a href="#cb6-256" aria-hidden="true" tabindex="-1"></a>::: {.callout-tip collapse="true"}</span>
+<span id="cb6-257"><a href="#cb6-257" aria-hidden="true" tabindex="-1"></a><span class="fu">## Data &amp; sources</span></span>
+<span id="cb6-258"><a href="#cb6-258" aria-hidden="true" tabindex="-1"></a>Golmetz *et al.* (2026), *"Sex ratio bias triggers demographic suicide in a dense</span>
+<span id="cb6-259"><a href="#cb6-259" aria-hidden="true" tabindex="-1"></a>tortoise population"*, [*Ecology Letters*</span>
+<span id="cb6-260"><a href="#cb6-260" aria-hidden="true" tabindex="-1"></a>70296](https://onlinelibrary.wiley.com/doi/10.1111/ele.70296); data via</span>
+<span id="cb6-261"><a href="#cb6-261" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">TidyTuesday 2026-03-03</span><span class="co">](https://github.com/rfordatascience/tidytuesday/tree/main/data/2026/2026-03-03)</span></span>
+<span id="cb6-262"><a href="#cb6-262" aria-hidden="true" tabindex="-1"></a>(curated by Novica Nakov). 10,174 body-condition captures of ~2,300 individuals;</span>
+<span id="cb6-263"><a href="#cb6-263" aria-hidden="true" tabindex="-1"></a>53 measured clutches. Sites: Plateau and Beach (Golem Grad island), Konjsko (mainland).</span>
+<span id="cb6-264"><a href="#cb6-264" aria-hidden="true" tabindex="-1"></a>:::</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 

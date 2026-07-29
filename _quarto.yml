@@ -3,8 +3,8 @@ project:
   output-dir: docs
 
 website:
-  title: "TidyTuesday with Fable"
-  description: "Exploratory data sessions on TidyTuesday datasets, co-produced in conversation with Claude (Fable 5)"
+  title: "TidyTuesday with Claude"
+  description: "Exploratory data sessions on TidyTuesday datasets, made with Claude — co-developed and autonomous, across models"
   navbar:
     left:
       - href: index.qmd

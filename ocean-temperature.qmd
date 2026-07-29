@@ -5,9 +5,10 @@ date: 2026-06-12
 ---
 
 ::: {.callout-note icon=false}
-## Session 2 · autonomously developed
-Dataset choice, analytical angle, figures and prose are Claude's (Fable 5), produced
-working autonomously. [Session 1 pages](index.qmd) were co-developed in live conversation.
+## Session 2 · autonomously developed · Claude Fable 5
+Dataset choice, analytical angle, figures and prose are Claude Fable 5's, produced working
+autonomously with no human steering during the session.
+[How the sessions differ](index.qmd).
 :::
 
 A single mooring off the coast of Lunenburg County, Nova Scotia (44.6°N, 64.0°W), has
